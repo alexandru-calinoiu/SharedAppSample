@@ -15,5 +15,5 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "SharedAppSample"
-include(":androidApp")
+include(":androidApp", ":features:feature1")
 include(":shared")

@@ -2,7 +2,6 @@ package dependencies
 
 object Dependencies {
     const val MATERIAL = "com.google.android.material:material:1.6.1"
-    const val CONSTRAINT_LAYOUT = "androidx.constraintlayout:constraintlayout:2.1.4"
 
     object Coroutines {
         const val VERSION = "1.6.4"
@@ -15,11 +14,42 @@ object Dependencies {
         const val CORE = "androidx.core:core-ktx:1.8.0"
         const val APPCOMPAT = "androidx.appcompat:appcompat:1.5.0"
 
+        object Navigation {
+            private const val VERSION = "2.5.0-rc01"
+
+            const val UI = "androidx.navigation:navigation-ui-ktx:$VERSION"
+            const val COMPOSE = "androidx.navigation:navigation-compose:$VERSION"
+        }
+
         object Compose {
             const val VERSION = "1.3.0"
+            private const val ACCOMPANIST_PAGER_VERSION = "0.20.0"
+            private const val CONSTRAINTLAYOUT_VERSION = "1.0.0-rc02"
+
+            const val UI = "androidx.compose.ui:ui:1.2.1"
+
+            // Tooling support (Previews, etc.)
+            const val UI_TOOLING = "androidx.compose.ui:ui-tooling:1.2.1"
+
+            // Foundation (Border, Background, Box, Image, Scroll, shapes, animations, etc.)
+            const val FOUNDATION = "androidx.compose.foundation:foundation:1.2.1"
+
+            // Material Design
+            const val MATERIAL = "androidx.compose.material:material:1.2.1"
+
+            // Material design icons
+            const val MATERIAL_ICONS = "androidx.compose.material:material-icons-core:1.2.1"
+            const val MATERIAL_ICONS_EXTENDED = "androidx.compose.material:material-icons-extended:1.2.1"
+
+            // Integration with activities
+            const val ACTIVITY = "androidx.activity:activity-compose:1.5.1"
 
             // Integration with observables
             const val LIVEDATA = "androidx.compose.runtime:runtime-livedata:1.2.1"
+
+            const val PAGER = "com.google.accompanist:accompanist-pager:$ACCOMPANIST_PAGER_VERSION"
+
+            const val CONSTRAINT_LAYOUT = "androidx.constraintlayout:constraintlayout-compose:$CONSTRAINTLAYOUT_VERSION"
         }
     }
 }

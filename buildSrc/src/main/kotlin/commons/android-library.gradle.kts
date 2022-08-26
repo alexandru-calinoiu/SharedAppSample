@@ -1,10 +1,11 @@
+package commons
+
 import dependencies.Dependencies
-import dependencies.TestDependencies
 import dependencies.TestAndroidDependencies
-import extensions.addProductFlavours
+import dependencies.TestDependencies
 
 plugins {
-    id("com.android.application")
+    id("com.android.library")
     kotlin("android")
 }
 
@@ -12,37 +13,8 @@ android {
     compileSdk = BuildAndroidConfig.COMPILE_SDK_VERSION
 
     defaultConfig {
-        applicationId = BuildAndroidConfig.APPLICATION_ID
         minSdk = BuildAndroidConfig.MIN_SDK_VERSION
         targetSdk = BuildAndroidConfig.TARGET_SDK_VERSION
-
-        versionCode = BuildAndroidConfig.VERSION_CODE
-        versionName = BuildAndroidConfig.VERSION_NAME
-
-        testInstrumentationRunner = BuildAndroidConfig.TEST_INSTRUMENTATION_RUNNER
-        testInstrumentationRunnerArguments.putAll(BuildAndroidConfig.TEST_INSTRUMENTATION_RUNNER_ARGUMENTS)
-    }
-
-    buildTypes {
-        getByName(BuildType.RELEASE) {
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-            isMinifyEnabled = BuildTypeRelease.isMinifyEnabled
-        }
-        getByName(BuildType.DEBUG) {
-            signingConfig = signingConfigs.getByName(BuildType.DEBUG)
-            applicationIdSuffix = BuildTypeDebug.applicationIdSuffix
-            versionNameSuffix = BuildTypeDebug.versionNameSuffix
-            isMinifyEnabled = BuildTypeDebug.isMinifyEnabled
-        }
-    }
-
-    addProductFlavours(this)
-
-    buildFeatures {
-        compose = true
     }
 
     compileOptions {
@@ -54,15 +26,8 @@ android {
         jvmTarget = JavaVersion.VERSION_11.toString()
     }
 
-    lint {
-        lintConfig = rootProject.file(".lint/config.xml")
-        checkAllWarnings = true
-        warningsAsErrors = true
-    }
-
-    testOptions {
-        unitTests.isIncludeAndroidResources = true
-        unitTests.isReturnDefaultValues = true
+    buildFeatures {
+        compose = true
     }
 
     sourceSets {
@@ -77,6 +42,17 @@ android {
         }
     }
 
+    lint {
+        lintConfig = rootProject.file(".lint/config.xml")
+        checkAllWarnings = true
+        warningsAsErrors = true
+    }
+
+    testOptions {
+        unitTests.isIncludeAndroidResources = true
+        unitTests.isReturnDefaultValues = true
+    }
+
     composeOptions {
         kotlinCompilerExtensionVersion = Dependencies.AndroidX.Compose.VERSION
     }
@@ -84,7 +60,6 @@ android {
 
 dependencies {
     implementation(project(BuildModules.Shared))
-    implementation(project(BuildModules.Features.Feature1))
 
     implementation(Dependencies.Coroutines.CORE)
     implementation(Dependencies.Coroutines.ANDROID)

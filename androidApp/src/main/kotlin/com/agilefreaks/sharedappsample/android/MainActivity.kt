@@ -1,20 +1,39 @@
 package com.agilefreaks.sharedappsample.android
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.Scaffold
+import androidx.compose.ui.Modifier
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.rememberNavController
+import com.agilefreaks.sharedappsample.AppDestinations
 import com.agilefreaks.sharedappsample.Greeting
-import android.widget.TextView
+import com.agilefreaks.sharedappsample.feature1.feature1
 
 fun greet(): String {
     return Greeting().greeting()
 }
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
-        val tv: TextView = findViewById(R.id.text_view)
-        tv.text = greet()
+        setContent {
+            val navHostController = rememberNavController()
+
+            SampleAppTheme {
+                Scaffold { innerPadding ->
+                    NavHost(
+                        navController = navHostController,
+                        startDestination = AppDestinations.Features.feature1,
+                        modifier = Modifier.padding(innerPadding)
+                    ) {
+                        feature1()
+                    }
+                }
+            }
+        }
     }
 }
