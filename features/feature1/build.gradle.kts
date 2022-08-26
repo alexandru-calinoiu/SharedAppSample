@@ -9,4 +9,5 @@ android {
 }
 
 dependencies {
+    implementation(project(BuildModules.Features.Feature1Shared))
 }

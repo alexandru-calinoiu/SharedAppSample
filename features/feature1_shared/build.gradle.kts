@@ -1,5 +1,3 @@
-import dependencies.Dependencies
-
 plugins {
     kotlin("multiplatform")
     kotlin("native.cocoapods")
@@ -18,9 +16,8 @@ kotlin {
         summary = "Some description for the Shared Module"
         homepage = "Link to the Shared Module homepage"
         ios.deploymentTarget = "14.1"
-        podfile = project.file("../iosApp/Podfile")
         framework {
-            baseName = "shared"
+            baseName = "feature1_shared"
         }
     }
     
@@ -31,14 +28,7 @@ kotlin {
                 implementation(kotlin("test"))
             }
         }
-        val androidMain by getting {
-            dependencies {
-                implementation(Dependencies.AndroidX.Lifecycle.VIEWMODEL)
-                implementation(Dependencies.AndroidX.Lifecycle.VIEWMODEL_COMPOSE)
-                implementation(Dependencies.AndroidX.Lifecycle.LIVEDATA)
-                implementation(Dependencies.AndroidX.Lifecycle.RUNTIME_KTX)
-            }
-        }
+        val androidMain by getting
         val androidTest by getting
         val iosX64Main by getting
         val iosArm64Main by getting
@@ -62,10 +52,10 @@ kotlin {
 }
 
 android {
-    compileSdk = BuildAndroidConfig.COMPILE_SDK_VERSION
+    compileSdk = 32
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     defaultConfig {
-        minSdk = BuildAndroidConfig.MIN_SDK_VERSION
-        targetSdk = BuildAndroidConfig.TARGET_SDK_VERSION
+        minSdk = 24
+        targetSdk = 32
     }
 }
