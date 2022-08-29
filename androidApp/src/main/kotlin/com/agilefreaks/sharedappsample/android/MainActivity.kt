@@ -10,7 +10,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import com.agilefreaks.sharedappsample.AppDestinations
 import com.agilefreaks.sharedappsample.Greeting
-import com.agilefreaks.sharedappsample.feature1.feature1
+import com.agilefreaks.sharedappsample.features.explore.explore
 
 fun greet(): String {
     return Greeting().greeting()
@@ -27,10 +27,10 @@ class MainActivity : ComponentActivity() {
                 Scaffold { innerPadding ->
                     NavHost(
                         navController = navHostController,
-                        startDestination = AppDestinations.Features.feature1,
+                        startDestination = AppDestinations.Features.explore,
                         modifier = Modifier.padding(innerPadding)
                     ) {
-                        feature1()
+                        explore()
                     }
                 }
             }

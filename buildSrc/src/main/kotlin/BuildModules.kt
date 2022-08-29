@@ -2,8 +2,9 @@ object BuildModules {
     const val Shared = ":shared"
 
     object Features {
-        const val Feature1 = ":features:feature1"
-        const val Feature1Shared = ":features:feature1_shared"
-        const val Feature2 = ":features:feature2"
+        const val Explore = ":features:explore"
+        const val ExploreShared = ":features:explore_shared"
+        const val Profile = ":features:profile"
+        const val ProfileShared = ":features:profile_shared"
     }
 }

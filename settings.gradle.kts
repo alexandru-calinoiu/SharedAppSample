@@ -17,6 +17,7 @@ dependencyResolutionManagement {
 rootProject.name = "SharedAppSample"
 include(
     ":androidApp",
-    ":features:feature1", ":features:feature1_shared"
+    ":features:explore", ":features:explore_shared",
+    ":features:profile", ":features:profile_shared"
 )
 include(":shared")

@@ -4,20 +4,20 @@ object AppDestinations {
     open class Screen(val route: String)
 
     object Features {
-        const val feature1 = "feature1"
+        const val explore = "explore"
 
-        const val feature2 = "feature2"
+        const val profile = "profile"
     }
 
-    object Feature1 {
-        abstract class Feature1Screen(route: String) : Screen(route)
+    object Explore {
+        abstract class ExploreScreen(route: String) : Screen(route)
 
-        object Landing : Feature1Screen("landing")
+        object Landing : ExploreScreen("landing")
     }
 
-    object Feature2 {
-        abstract class Feature2Screen(route: String) : Screen(route)
+    object Profile {
+        abstract class ProfileScreen(route: String) : Screen(route)
 
-        object Landing : Feature2Screen("landing")
+        object Landing : ProfileScreen("landing")
     }
 }

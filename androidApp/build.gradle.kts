@@ -84,7 +84,7 @@ android {
 
 dependencies {
     implementation(project(BuildModules.Shared))
-    implementation(project(BuildModules.Features.Feature1))
+    implementation(project(BuildModules.Features.Explore))
 
     implementation(Dependencies.Coroutines.CORE)
     implementation(Dependencies.Coroutines.ANDROID)
