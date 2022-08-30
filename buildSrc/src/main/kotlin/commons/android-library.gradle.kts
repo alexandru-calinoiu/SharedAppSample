@@ -61,6 +61,9 @@ android {
 dependencies {
     implementation(project(BuildModules.Shared))
 
+    implementation(Dependencies.Koin.ANDROID)
+    implementation(Dependencies.Koin.COMPOSE)
+
     implementation(Dependencies.Coroutines.CORE)
     implementation(Dependencies.Coroutines.ANDROID)
 

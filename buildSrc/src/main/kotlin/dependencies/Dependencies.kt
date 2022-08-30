@@ -64,6 +64,19 @@ object Dependencies {
             // if using Java8, use the following instead of lifecycle-compiler
             const val COMMON_JAVA8 = "androidx.lifecycle:lifecycle-common-java8:$VERSION"
         }
+    }
 
+    object Apollo {
+        const val VERSION = "3.5.0"
+
+        const val RUNTIME = "com.apollographql.apollo3:apollo-runtime:$VERSION"
+    }
+
+    object Koin {
+        const val VERSION = "3.2.0"
+
+        const val CORE = "io.insert-koin:koin-core:$VERSION"
+        const val ANDROID = "io.insert-koin:koin-android:$VERSION"
+        const val COMPOSE = "io.insert-koin:koin-androidx-compose:$VERSION"
     }
 }

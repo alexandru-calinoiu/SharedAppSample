@@ -8,8 +8,8 @@ fun addProductFlavours(extension: TestedExtension) {
     val flavourDimension = "env"
     val prod = "prod"
     val staging = "staging"
-    val prodUrl = "\"some-prod-url\""
-    val stagingUrl = "\"some-staging-url\""
+    val prodUrl = "\"https://api.github.com/graphql\""
+    val stagingUrl = "\"https://api.github.com/graphql\""
 
     extension.flavorDimensions(flavourDimension)
 

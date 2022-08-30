@@ -86,6 +86,9 @@ dependencies {
     implementation(project(BuildModules.Shared))
     implementation(project(BuildModules.Features.Explore))
 
+    implementation(Dependencies.Koin.CORE)
+    implementation(Dependencies.Koin.ANDROID)
+
     implementation(Dependencies.Coroutines.CORE)
     implementation(Dependencies.Coroutines.ANDROID)
 
@@ -105,6 +108,7 @@ dependencies {
     implementation(Dependencies.AndroidX.Navigation.UI)
 
     testImplementation(TestDependencies.JUNIT)
+    testImplementation(TestDependencies.KOIN)
 
     androidTestImplementation(TestAndroidDependencies.AndroidX.JUNIT)
     androidTestImplementation(TestAndroidDependencies.AndroidX.ESPRESSO_CORE)

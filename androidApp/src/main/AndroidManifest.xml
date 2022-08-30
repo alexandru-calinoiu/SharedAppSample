@@ -2,7 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.agilefreaks.sharedappsample.android">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
+        android:name=".SharedAppSampleApp"
         android:allowBackup="true"
         android:supportsRtl="true"
         android:theme="@style/Theme.SharedAppSample"

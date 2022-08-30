@@ -1,5 +1,8 @@
 package commons
 
+import dependencies.Dependencies
+import dependencies.TestDependencies
+
 plugins {
     kotlin("multiplatform")
     kotlin("native.cocoapods")
@@ -15,10 +18,15 @@ kotlin {
     iosSimulatorArm64()
 
     sourceSets {
-        val commonMain by getting
+        val commonMain by getting {
+            dependencies {
+                implementation(Dependencies.Koin.CORE)
+            }
+        }
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test"))
+                implementation(TestDependencies.KOIN)
             }
         }
         val androidMain by getting

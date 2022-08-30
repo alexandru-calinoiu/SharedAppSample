@@ -1,5 +1,12 @@
+import dependencies.Dependencies
+
 plugins {
     id("commons.shared-library")
+    id("com.apollographql.apollo3").version(dependencies.Dependencies.Apollo.VERSION)
+}
+
+dependencies {
+    apolloMetadata(project(BuildModules.Shared))
 }
 
 kotlin {
@@ -10,5 +17,18 @@ kotlin {
         framework {
             baseName = "explore_shared"
         }
+        sourceSets {
+            val commonMain by getting {
+                dependencies {
+                    implementation(project(BuildModules.Shared))
+
+                    implementation(Dependencies.Apollo.RUNTIME)
+                }
+            }
+        }
     }
+}
+
+apollo {
+    packageName.set("com.agilefreaks.sharedappsample.features.explore.dtos")
 }
