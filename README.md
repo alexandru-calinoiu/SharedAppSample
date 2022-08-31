@@ -15,6 +15,7 @@ TODO
 - generate a github personal token
 - update features .graphqlconfig (copy the example)
 - update koin.properties from androidApp
+- need to run `gradlew podspec`
 
 ### TODO
 

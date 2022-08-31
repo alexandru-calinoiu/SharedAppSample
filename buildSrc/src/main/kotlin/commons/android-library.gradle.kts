@@ -61,6 +61,8 @@ android {
 dependencies {
     implementation(project(BuildModules.Shared))
 
+    implementation(Dependencies.Result.ANDROID)
+
     implementation(Dependencies.Koin.ANDROID)
     implementation(Dependencies.Koin.COMPOSE)
 

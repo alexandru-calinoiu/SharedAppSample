@@ -10,22 +10,25 @@ kotlin {
         summary = "Shared"
         homepage = "https://github.com/alexandru-calinoiu/SharedAppSample"
         ios.deploymentTarget = "14.1"
+        podfile = project.file("../iosApp/Podfile")
         framework {
-            baseName = "explore_shared"
+            baseName = "shared"
         }
-        sourceSets {
-            val commonMain by getting {
-                dependencies {
-                    implementation(Dependencies.Apollo.RUNTIME)
-                }
+    }
+
+    sourceSets {
+        val commonMain by getting {
+            dependencies {
+                implementation(Dependencies.Apollo.RUNTIME)
+                implementation(Dependencies.Coroutines.CORE)
             }
-            val androidMain by getting {
-                dependencies {
-                    implementation(Dependencies.AndroidX.Lifecycle.VIEWMODEL)
-                    implementation(Dependencies.AndroidX.Lifecycle.VIEWMODEL_COMPOSE)
-                    implementation(Dependencies.AndroidX.Lifecycle.LIVEDATA)
-                    implementation(Dependencies.AndroidX.Lifecycle.RUNTIME_KTX)
-                }
+        }
+        val androidMain by getting {
+            dependencies {
+                implementation(Dependencies.AndroidX.Lifecycle.VIEWMODEL)
+                implementation(Dependencies.AndroidX.Lifecycle.VIEWMODEL_COMPOSE)
+                implementation(Dependencies.AndroidX.Lifecycle.LIVEDATA)
+                implementation(Dependencies.AndroidX.Lifecycle.RUNTIME_KTX)
             }
         }
     }

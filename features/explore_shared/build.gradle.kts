@@ -14,16 +14,19 @@ kotlin {
         summary = "Stuff related to user github repositories"
         homepage = "https://github.com/alexandru-calinoiu/SharedAppSample"
         ios.deploymentTarget = "14.1"
+        podfile = project.file("../../iosApp/Podfile")
         framework {
             baseName = "explore_shared"
         }
-        sourceSets {
-            val commonMain by getting {
-                dependencies {
-                    implementation(project(BuildModules.Shared))
+    }
 
-                    implementation(Dependencies.Apollo.RUNTIME)
-                }
+    sourceSets {
+        val commonMain by getting {
+            dependencies {
+                implementation(project(BuildModules.Shared))
+
+                implementation(Dependencies.Apollo.RUNTIME)
+                implementation(Dependencies.Koin.CORE)
             }
         }
     }

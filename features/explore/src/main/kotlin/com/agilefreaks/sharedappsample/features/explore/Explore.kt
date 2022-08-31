@@ -7,7 +7,7 @@ import com.agilefreaks.sharedappsample.AppDestinations
 import com.agilefreaks.sharedappsample.features.explore.repo_list.Screen
 import com.agilefreaks.sharedappsample.features.explore.repo_list.ViewModel
 import com.agilefreaks.sharedappsample.features.explore.repo_list.repoListModule
-import com.agilefreaks.sharedappsample.features.explore_shared.repo_list.repoListSharedModule
+import com.agilefreaks.sharedappsample.features.explore_shared.modules
 import org.koin.androidx.compose.getViewModel
 import org.koin.core.module.Module
 
@@ -20,4 +20,4 @@ fun NavGraphBuilder.explore() {
     }
 }
 
-fun exploreModules() : List<Module> = listOf(repoListModule, repoListSharedModule)
+fun exploreModules() : List<Module> = listOf(repoListModule) + modules()

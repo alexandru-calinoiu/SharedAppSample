@@ -19,12 +19,8 @@ class ViewModel(private val viewerRepository: ViewerRepository) :
             setState { copy(isLoading = true) }
             val result = viewerRepository.repos()
             setState { copy(isLoading = false) }
-            when (result.isSuccess) {
-                true ->
-                    setState { copy(repos = result.getOrDefault(emptyList())) }
-                false ->
-                    Log.e("ExploreViewModel", result.exceptionOrNull()?.message ?: "")
-            }
+            result.fold({ repos -> setState { copy(repos = repos) } },
+                { err -> Log.e("ExploreViewModel", err.message ?: "") })
         }
     }
 }

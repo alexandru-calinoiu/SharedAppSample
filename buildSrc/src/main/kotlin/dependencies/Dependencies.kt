@@ -3,6 +3,13 @@ package dependencies
 object Dependencies {
     const val MATERIAL = "com.google.android.material:material:1.6.1"
 
+    object Result {
+        private const val VERSION = "5.2.1"
+
+        const val KMM = "com.github.kittinunf.result:result:$VERSION"
+        const val ANDROID = "com.github.kittinunf.result:result-jvm:$VERSION"
+    }
+
     object Coroutines {
         const val VERSION = "1.6.4"
 

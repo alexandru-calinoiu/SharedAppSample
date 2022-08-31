@@ -2,9 +2,10 @@ package com.agilefreaks.sharedappsample.features.explore_shared.repo_list
 
 import com.agilefreaks.sharedappsample.features.explore.dtos.ViewerRepositoriesQuery
 import com.apollographql.apollo3.ApolloClient
+import         com.github.kittinunf.result.Result
 
 class ViewerRepository(private val client: ApolloClient) {
-    suspend fun repos(): Result<List<Repo>> {
+    suspend fun repos(): Result<List<Repo>, Throwable> {
         val response = client
             .query(ViewerRepositoriesQuery())
             .execute()
