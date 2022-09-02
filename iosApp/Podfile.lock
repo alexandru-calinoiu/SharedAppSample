@@ -1,0 +1,21 @@
+PODS:
+  - explore_shared (1.0)
+  - shared (1.0)
+
+DEPENDENCIES:
+  - explore_shared (from `../features/explore_shared`)
+  - shared (from `../shared`)
+
+EXTERNAL SOURCES:
+  explore_shared:
+    :path: "../features/explore_shared"
+  shared:
+    :path: "../shared"
+
+SPEC CHECKSUMS:
+  explore_shared: 83b216fbbccd1f08b7758ef44434f47faaf33d78
+  shared: c757b452c7fdb8d1822001b928ece1c6ba185fa4
+
+PODFILE CHECKSUM: 435160a3f92dab4cb45177c8bd8d411fe4977db3
+
+COCOAPODS: 1.11.3

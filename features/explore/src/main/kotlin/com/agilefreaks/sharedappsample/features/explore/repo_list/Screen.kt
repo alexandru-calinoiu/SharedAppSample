@@ -61,7 +61,3 @@ fun Loading(modifier: Modifier = Modifier) {
 fun ScreenPreview() {
     Screen(state = Contract.State(isLoading = true))
 }
-
-private object Companion {
-    const val PROGRESS_HEIGHT_FRACTION = 0.5f
-}
