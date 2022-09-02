@@ -13,7 +13,7 @@ kotlin {
     cocoapods {
         summary = "Stuff related to user github repositories"
         homepage = "https://github.com/alexandru-calinoiu/SharedAppSample"
-        ios.deploymentTarget = "14.1"
+        ios.deploymentTarget = BuildiOSConfig.DEPLOYMENT_TARGET
         podfile = project.file("../../iosApp/Podfile")
         framework {
             baseName = "explore_shared"
@@ -26,7 +26,6 @@ kotlin {
                 implementation(project(BuildModules.Shared))
 
                 implementation(Dependencies.Apollo.RUNTIME)
-                implementation(Dependencies.Koin.CORE)
             }
         }
     }
