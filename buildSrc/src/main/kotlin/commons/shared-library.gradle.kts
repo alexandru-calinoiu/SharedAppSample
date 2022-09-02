@@ -22,6 +22,7 @@ kotlin {
             dependencies {
                 implementation(Dependencies.Koin.CORE)
                 implementation(Dependencies.Result.KMM)
+                implementation(Dependencies.Coroutines.CORE)
             }
         }
         val commonTest by getting {

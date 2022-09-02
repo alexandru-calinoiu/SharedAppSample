@@ -1,6 +1,6 @@
 {
   "name": "Github GraphQL Schema",
-  "schemaPath": "schema.json",
+  "schemaPath": "../../../../../shared/src/commonMain/graphql/schema.json",
   "extensions": {
     "endpoints": {
       "Default GraphQL Endpoint": {

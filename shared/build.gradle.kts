@@ -20,7 +20,6 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(Dependencies.Apollo.RUNTIME)
-                implementation(Dependencies.Coroutines.CORE)
             }
         }
         val androidMain by getting {
