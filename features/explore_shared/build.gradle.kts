@@ -16,7 +16,7 @@ kotlin {
         ios.deploymentTarget = BuildiOSConfig.DEPLOYMENT_TARGET
         podfile = project.file("../../iosApp/Podfile")
         framework {
-            baseName = "explore_shared"
+            baseName = "ExploreShared"
         }
     }
 

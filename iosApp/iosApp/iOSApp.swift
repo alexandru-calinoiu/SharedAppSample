@@ -1,16 +1,16 @@
 import SwiftUI
 import Shared
-import explore_shared
+import ExploreShared
 
 @main
 struct iOSApp: App {
     init() {
-        ExploreKt.doInitKoin(properties: [Properties.shared.SERVER_URL:"https://api.github.com/graphql", Properties.shared.TOKEN: "your personal token"])
+        ExploreKt.doInitKoin(properties: [Properties.shared.SERVER_URL:"https://api.github.com/graphql", Properties.shared.TOKEN: "personal token"])
     }
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RepoListView()
         }
     }
 }

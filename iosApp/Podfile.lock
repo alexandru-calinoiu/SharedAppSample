@@ -13,7 +13,7 @@ EXTERNAL SOURCES:
     :path: "../shared"
 
 SPEC CHECKSUMS:
-  explore_shared: 83b216fbbccd1f08b7758ef44434f47faaf33d78
+  explore_shared: 0d1532604f5ff5e0f438bf54960b7776464f0d46
   shared: 59bbadd07db5885f18897e4c17c5142801fa1d51
 
 PODFILE CHECKSUM: 435160a3f92dab4cb45177c8bd8d411fe4977db3

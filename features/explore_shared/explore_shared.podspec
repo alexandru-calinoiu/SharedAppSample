@@ -6,14 +6,14 @@ Pod::Spec.new do |spec|
     spec.authors                  = ''
     spec.license                  = ''
     spec.summary                  = 'Stuff related to user github repositories'
-    spec.vendored_frameworks      = 'build/cocoapods/framework/explore_shared.framework'
+    spec.vendored_frameworks      = 'build/cocoapods/framework/ExploreShared.framework'
     spec.libraries                = 'c++'
     spec.ios.deployment_target = '14.1'
                 
                 
     spec.pod_target_xcconfig = {
         'KOTLIN_PROJECT_PATH' => ':features:explore_shared',
-        'PRODUCT_MODULE_NAME' => 'explore_shared',
+        'PRODUCT_MODULE_NAME' => 'ExploreShared',
     }
                 
     spec.script_phases = [
