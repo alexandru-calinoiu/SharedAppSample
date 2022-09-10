@@ -1,9 +1,9 @@
 object BuildAndroidConfig {
     const val APPLICATION_ID = "com.agilefreaks.sharedappsample.android"
 
-    const val COMPILE_SDK_VERSION = 32
+    const val COMPILE_SDK_VERSION = 33
     const val MIN_SDK_VERSION = 24
-    const val TARGET_SDK_VERSION = 32
+    const val TARGET_SDK_VERSION = 33
 
     private const val VERSION_MAJOR = 1
     private const val VERSION_MINOR = 0

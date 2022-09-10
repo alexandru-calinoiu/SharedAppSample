@@ -26,6 +26,7 @@ kotlin {
                 implementation(project(BuildModules.Shared))
 
                 implementation(Dependencies.Apollo.RUNTIME)
+                implementation(Dependencies.Apollo.ADAPTERS)
             }
         }
     }

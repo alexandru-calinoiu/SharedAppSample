@@ -22,7 +22,9 @@ kotlin {
             dependencies {
                 implementation(Dependencies.Koin.CORE)
                 implementation(Dependencies.Result.KMM)
-                implementation(Dependencies.Coroutines.CORE)
+
+                implementation(Dependencies.Kotlinx.Coroutines.CORE)
+                api(Dependencies.Kotlinx.DATE_TIME)
             }
         }
         val commonTest by getting {

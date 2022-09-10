@@ -89,8 +89,8 @@ dependencies {
     implementation(Dependencies.Koin.CORE)
     implementation(Dependencies.Koin.ANDROID)
 
-    implementation(Dependencies.Coroutines.CORE)
-    implementation(Dependencies.Coroutines.ANDROID)
+    implementation(Dependencies.Kotlinx.Coroutines.CORE)
+    implementation(Dependencies.Kotlinx.Coroutines.ANDROID)
 
     implementation(Dependencies.AndroidX.CORE)
     implementation(Dependencies.AndroidX.APPCOMPAT)

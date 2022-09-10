@@ -10,16 +10,27 @@ object Dependencies {
         const val ANDROID = "com.github.kittinunf.result:result-jvm:$VERSION"
     }
 
-    object Coroutines {
-        const val VERSION = "1.6.4"
+    object Kotlinx {
+        const val DATE_TIME = "org.jetbrains.kotlinx:kotlinx-datetime:0.4.0"
 
-        const val CORE = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$VERSION"
-        const val ANDROID = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$VERSION"
+        object Coroutines {
+            private const val VERSION = "1.6.4"
+
+            const val CORE = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$VERSION"
+            const val ANDROID = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$VERSION"
+        }
     }
 
     object AndroidX {
         const val CORE = "androidx.core:core-ktx:1.8.0"
         const val APPCOMPAT = "androidx.appcompat:appcompat:1.5.0"
+        const val CUSTOM_VIEW_POOLINGCONTAINER = "androidx.customview:customview-poolingcontainer:1.0.0"
+
+        object Paging {
+            private const val VERSION = "3.1.1"
+
+            const val RUNTIME = "androidx.paging:paging-runtime:$VERSION"
+        }
 
         object Navigation {
             private const val VERSION = "2.5.0-rc01"
@@ -30,8 +41,6 @@ object Dependencies {
 
         object Compose {
             const val VERSION = "1.3.0"
-            private const val ACCOMPANIST_PAGER_VERSION = "0.20.0"
-            private const val CONSTRAINTLAYOUT_VERSION = "1.0.0-rc02"
 
             const val UI = "androidx.compose.ui:ui:1.2.1"
 
@@ -54,9 +63,7 @@ object Dependencies {
             // Integration with observables
             const val LIVEDATA = "androidx.compose.runtime:runtime-livedata:1.2.1"
 
-            const val PAGER = "com.google.accompanist:accompanist-pager:$ACCOMPANIST_PAGER_VERSION"
-
-            const val CONSTRAINT_LAYOUT = "androidx.constraintlayout:constraintlayout-compose:$CONSTRAINTLAYOUT_VERSION"
+            const val PAGING = "androidx.paging:paging-compose:1.0.0-alpha16"
         }
 
         object Lifecycle {
@@ -77,6 +84,7 @@ object Dependencies {
         const val VERSION = "3.5.0"
 
         const val RUNTIME = "com.apollographql.apollo3:apollo-runtime:$VERSION"
+        const val ADAPTERS = "com.apollographql.apollo3:apollo-adapters:$VERSION"
     }
 
     object Koin {

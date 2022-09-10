@@ -66,15 +66,17 @@ dependencies {
     implementation(Dependencies.Koin.ANDROID)
     implementation(Dependencies.Koin.COMPOSE)
 
-    implementation(Dependencies.Coroutines.CORE)
-    implementation(Dependencies.Coroutines.ANDROID)
+    implementation(Dependencies.Kotlinx.Coroutines.CORE)
+    implementation(Dependencies.Kotlinx.Coroutines.ANDROID)
 
     implementation(Dependencies.AndroidX.CORE)
     implementation(Dependencies.AndroidX.APPCOMPAT)
+    implementation(Dependencies.AndroidX.Paging.RUNTIME)
     implementation(Dependencies.MATERIAL)
 
     implementation(Dependencies.AndroidX.Compose.FOUNDATION)
     implementation(Dependencies.AndroidX.Compose.UI)
+    implementation(Dependencies.AndroidX.Compose.PAGING)
     implementation(Dependencies.AndroidX.Compose.UI_TOOLING)
     implementation(Dependencies.AndroidX.Compose.MATERIAL)
     implementation(Dependencies.AndroidX.Compose.MATERIAL_ICONS)
@@ -83,6 +85,8 @@ dependencies {
 
     implementation(Dependencies.AndroidX.Navigation.COMPOSE)
     implementation(Dependencies.AndroidX.Navigation.UI)
+
+    debugImplementation(Dependencies.AndroidX.CUSTOM_VIEW_POOLINGCONTAINER)
 
     testImplementation(TestDependencies.JUNIT)
 

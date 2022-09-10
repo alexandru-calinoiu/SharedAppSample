@@ -5,6 +5,11 @@ query ViewerRepositories{
             edges {
                 node {
                     name
+                    description
+                    primaryLanguage {
+                         name
+                    }
+                    pushedAt
                 }
             }
         }
