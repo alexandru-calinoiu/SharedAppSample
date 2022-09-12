@@ -1,13 +1,19 @@
-query ViewerRepositories{
+query ViewerRepositories($pageSize: Int, $afterCursor: String){
     viewer {
         name
-        repositories(first: 10) {
+        repositories(first: $pageSize, after: $afterCursor) {
+            pageInfo {
+                startCursor
+                endCursor
+                hasPreviousPage
+                hasNextPage
+            }
             edges {
                 node {
                     name
                     description
                     primaryLanguage {
-                         name
+                        name
                     }
                     pushedAt
                 }

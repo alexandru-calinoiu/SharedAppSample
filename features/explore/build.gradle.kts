@@ -9,5 +9,6 @@ android {
 }
 
 dependencies {
+    implementation(project(BuildModules.UI))
     implementation(project(BuildModules.Features.ExploreShared))
 }

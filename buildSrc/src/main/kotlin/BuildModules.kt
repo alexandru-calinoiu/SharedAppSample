@@ -1,5 +1,6 @@
 object BuildModules {
     const val Shared = ":shared"
+    const val UI = ":ui"
 
     object Features {
         const val Explore = ":features:explore"
