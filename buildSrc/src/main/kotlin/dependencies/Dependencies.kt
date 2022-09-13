@@ -81,7 +81,7 @@ object Dependencies {
     }
 
     object Apollo {
-        const val VERSION = "3.5.0"
+        const val VERSION = "3.6.0"
 
         const val RUNTIME = "com.apollographql.apollo3:apollo-runtime:$VERSION"
         const val ADAPTERS = "com.apollographql.apollo3:apollo-adapters:$VERSION"
