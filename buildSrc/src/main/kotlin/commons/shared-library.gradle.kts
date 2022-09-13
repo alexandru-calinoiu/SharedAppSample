@@ -30,7 +30,12 @@ kotlin {
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test"))
+
                 implementation(TestDependencies.KOIN)
+                implementation(TestDependencies.Apollo.MOCK_SERVER)
+                implementation(TestDependencies.Kotlinx.Coroutines.TEST)
+
+                implementation(TestDependencies.Suparnatural.FS)
             }
         }
         val androidMain by getting
