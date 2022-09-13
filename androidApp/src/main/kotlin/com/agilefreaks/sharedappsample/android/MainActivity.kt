@@ -25,7 +25,7 @@ class MainActivity : ComponentActivity() {
                         startDestination = AppDestinations.Features.explore,
                         modifier = Modifier.padding(innerPadding)
                     ) {
-                        explore()
+                        explore(navHostController)
                     }
                 }
             }

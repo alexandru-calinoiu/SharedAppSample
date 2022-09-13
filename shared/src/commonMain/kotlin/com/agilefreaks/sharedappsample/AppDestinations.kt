@@ -12,7 +12,11 @@ object AppDestinations {
     object Explore {
         abstract class ExploreScreen(route: String) : Screen(route)
 
+        abstract class DetailsScreen(route: String) : Screen(route)
+
         object Landing : ExploreScreen("landing")
+
+        object Details : DetailsScreen("details")
     }
 
     object Profile {

@@ -17,11 +17,19 @@ class ViewModel(private val viewerRepository: ViewerRepository) :
     override fun setInitialState(): Contract.State = Contract.State(repos = fetchRepos())
 
     override fun handleEvents(event: Contract.Event) {
-        TODO("Not yet implemented")
+        when (event) {
+            is Contract.Event.SelectRepo -> navigateToDetails(event.repoOwner, event.repoName)
+        }
     }
 
     private fun fetchRepos(): Flow<PagingData<Repo>> =
         Pager(PagingConfig(pageSize = 20)) {
             RepoPagingSource(viewerRepository)
         }.flow.cachedIn(viewModelScope)
+
+    private fun navigateToDetails(repoOwner: String, repoName: String) {
+        setEffect {
+            Contract.Effect.Navigation.ToDetails(repoOwner, repoName)
+        }
+    }
 }

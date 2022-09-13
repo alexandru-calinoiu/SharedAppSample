@@ -19,6 +19,8 @@ TODO
 
 ### TODO
 
-- [ ] Find out how to share schema.json between features
-- [ ] Add iOS feature1 link it to the shared project and main app and make it run
-- [ ] Add actual async network calls 
+- [x] Find out how to share schema.json between features
+- [x] Add iOS feature1 link it to the shared project and main app and make it run
+- [x] Add actual async network calls
+- [ ] Figure out preview
+- [ ] Add pagination list to iOS

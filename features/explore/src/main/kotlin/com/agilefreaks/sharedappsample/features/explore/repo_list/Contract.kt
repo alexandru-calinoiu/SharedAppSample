@@ -9,11 +9,17 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 
 class Contract {
-    sealed class Event : ViewEvent
+    sealed class Event : ViewEvent {
+        data class SelectRepo(val repoOwner: String, val repoName: String): Event()
+    }
 
     data class State(
         val repos: Flow<PagingData<Repo>> = flowOf(PagingData.empty())
     ) : ViewState
 
-    sealed class Effect : ViewSideEffect
+    sealed class Effect : ViewSideEffect {
+        sealed class Navigation: Effect() {
+            data class ToDetails(val repoOwner: String, val repoName: String): Navigation()
+        }
+    }
 }
