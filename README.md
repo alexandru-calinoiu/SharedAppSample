@@ -23,7 +23,8 @@ TODO
 - [x] Add iOS feature1 link it to the shared project and main app and make it run
 - [x] Add actual async network calls
 - [ ] Figure out preview
-- [ ] Add pagination list to iOS
+- [ ] Add pagination list to iOS (Calin)
 - [ ] Consider moving UI -> to shared/android/components
-- [ ] Details screen implementation
-- [ ] Profile feature
+- [ ] Details screen implementation (Cipi)
+- [ ] Add bottom navigation (Denis)
+- [ ] Profile feature (Robert)
