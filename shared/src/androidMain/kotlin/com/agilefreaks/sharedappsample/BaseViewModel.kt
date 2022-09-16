@@ -9,8 +9,6 @@ import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
-const val LAUNCH_LISTEN_FOR_EFFECTS = "launch-listen-to-effects"
-
 interface ViewState
 
 interface ViewEvent

@@ -10,6 +10,9 @@ query ViewerRepositories($pageSize: Int, $afterCursor: String){
             }
             edges {
                 node {
+                    owner {
+                        login
+                    }
                     name
                     description
                     primaryLanguage {

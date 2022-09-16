@@ -39,6 +39,7 @@ class ViewerRepository(private val client: ApolloClient) {
             .mapNotNull { it?.node }
             .map {
                 Repo(
+                    owner = it.owner.login,
                     name = it.name,
                     description = it.description ?: "",
                     primaryLanguage = it.primaryLanguage?.name ?: "",

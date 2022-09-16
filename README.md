@@ -24,3 +24,6 @@ TODO
 - [x] Add actual async network calls
 - [ ] Figure out preview
 - [ ] Add pagination list to iOS
+- [ ] Consider moving UI -> to shared/android/components
+- [ ] Details screen implementation
+- [ ] Profile feature

@@ -12,16 +12,22 @@
         "edges": [
           {
             "node": {
+              "owner": {
+                "login": "unglobalcompact"
+              },
               "name": "UNGC",
               "description": "UN Global Compact",
               "primaryLanguage": {
                 "name": "Ruby"
               },
-              "pushedAt": "2022-09-12T15:08:08Z"
+              "pushedAt": "2022-09-14T19:03:26Z"
             }
           },
           {
             "node": {
+              "owner": {
+                "login": "Agilefreaks"
+              },
               "name": "Aquarium",
               "description": "An AOP library for Ruby",
               "primaryLanguage": {
@@ -32,6 +38,9 @@
           },
           {
             "node": {
+              "owner": {
+                "login": "alexandru-calinoiu"
+              },
               "name": "railstutorial",
               "description": "a project that implements the online books samples",
               "primaryLanguage": {
@@ -42,6 +51,9 @@
           },
           {
             "node": {
+              "owner": {
+                "login": "alexandru-calinoiu"
+              },
               "name": "statometru",
               "description": "Rateaza institutile statului",
               "primaryLanguage": {
@@ -52,6 +64,9 @@
           },
           {
             "node": {
+              "owner": {
+                "login": "alexandru-calinoiu"
+              },
               "name": "PIT",
               "description": "pothole interactive tracker",
               "primaryLanguage": {
@@ -62,6 +77,9 @@
           },
           {
             "node": {
+              "owner": {
+                "login": "wedeal"
+              },
               "name": "wedeal_makeover",
               "description": "Visual redesign of the public facing pages",
               "primaryLanguage": {
@@ -72,6 +90,9 @@
           },
           {
             "node": {
+              "owner": {
+                "login": "samchao"
+              },
               "name": "Digital-Paper",
               "description": null,
               "primaryLanguage": {
@@ -82,6 +103,9 @@
           },
           {
             "node": {
+              "owner": {
+                "login": "alexandru-calinoiu"
+              },
               "name": "Introduction-to-Algorithms",
               "description": "Some exercises in order to refresh algorithms and learn ruby better",
               "primaryLanguage": {
@@ -92,6 +116,9 @@
           },
           {
             "node": {
+              "owner": {
+                "login": "alexandru-calinoiu"
+              },
               "name": "Ruby_Koans_Solution",
               "description": "My Solutions to ruby koans",
               "primaryLanguage": {
@@ -102,6 +129,9 @@
           },
           {
             "node": {
+              "owner": {
+                "login": "alexandru-calinoiu"
+              },
               "name": "ruby-koans-completed",
               "description": "These are my completed tests with in depth notes as I'm learning Ruby along the way.",
               "primaryLanguage": {

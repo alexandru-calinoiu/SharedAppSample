@@ -4,7 +4,10 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
@@ -19,7 +22,12 @@ class MainActivity : ComponentActivity() {
             val navHostController = rememberNavController()
 
             SampleAppTheme {
-                Scaffold { innerPadding ->
+                Scaffold(
+                    topBar = {
+                        TopAppBar(title = { Text("Title") },
+                        backgroundColor = MaterialTheme.colors.primary)
+                    }
+                ) { innerPadding ->
                     NavHost(
                         navController = navHostController,
                         startDestination = AppDestinations.Features.explore,

@@ -56,7 +56,7 @@ class ViewerRepositoryTest : KoinTest {
     @Test
     fun `repos will return the firs 10 repositories`(): Unit = runBlocking {
         mockServer.enqueue("viewer_repository_response.json".readResponseContent())
-        val (value, _) = viewerRepository.repos()
+        val (value, _) = viewerRepository.repos(10)
 
         assertEquals(value?.response?.size, 10)
     }
@@ -70,6 +70,14 @@ class ViewerRepositoryTest : KoinTest {
             endCursor = "Y3Vyc29yOnYyOpHOADURPg==",
             hasNextPage = true
         ))
+    }
+
+    @Test
+    fun `repos will populate the owner`(): Unit = runBlocking {
+        mockServer.enqueue("viewer_repository_response.json".readResponseContent())
+        val (value, _) = viewerRepository.repos()
+
+        assertEquals(value?.response?.first()?.owner, "unglobalcompact")
     }
 
     private fun String.readResponseContent() = FileSystem.readFile("responses/repo_list/$this")?.commonToUtf8String() ?: ""

@@ -46,13 +46,14 @@ fun Screen(
 
     if (list.loadState.refresh is LoadState.Loading) {
         Loading(Modifier.fillMaxSize())
-    }
-    PagingView(
-        list = list,
-        contentPadding = PaddingValues(space16dp)
-    ) {
-        items(list) {
-            it?.let { RepoItem(it) { onSendEvent(Contract.Event.SelectRepo("owner", it.name)) } }
+    } else {
+        PagingView(
+            list = list,
+            contentPadding = PaddingValues(space16dp)
+        ) {
+            items(list) {
+                it?.let { RepoItem(it) { onSendEvent(Contract.Event.SelectRepo(it.owner, it.name)) } }
+            }
         }
     }
 }
@@ -116,12 +117,14 @@ fun LoadingScreenPreview() {
 fun ItemScreenPreview() {
     val repos = listOf(
         Repo(
+            owner = "owner",
             name = "Repo 1",
             description = "Description",
             primaryLanguage = "Kotlin",
             lastActivity = null
         ),
         Repo(
+            owner = "owner",
             name = "repo2",
             description = "Description",
             primaryLanguage = "Haskell",

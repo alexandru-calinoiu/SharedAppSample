@@ -29,6 +29,11 @@ kotlin {
                 implementation(Dependencies.Apollo.ADAPTERS)
             }
         }
+        val androidMain by getting {
+            dependencies {
+                implementation(Dependencies.AndroidX.Navigation.COMPOSE)
+            }
+        }
     }
 }
 
