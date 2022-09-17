@@ -17,9 +17,11 @@ import ExploreShared
         let viewerRepo = RepositoryHelper().viewerRepository()
         
         do {
-            let result = try await viewerRepo.repos()
-            result.fold(success: { (repos: NSArray?) -> Any? in self.repoList = repos as! [Repo] },
-                        failure: { (err: KotlinThrowable) -> () in print(err)} )
+            let result = try await viewerRepo.repos(pageSize: 10, after: nil)
+            result.fold(
+                success: { (pagedResponse: SharedPagedResponse<Repo>?) -> Any? in
+                    self.repoList = pagedResponse?.response as! [Repo] },
+                failure: { (err: KotlinThrowable) -> () in print(err)} )
         } catch {
             print(error)
         }
