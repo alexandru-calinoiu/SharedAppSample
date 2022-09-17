@@ -46,7 +46,7 @@ private struct ListView: View {
     
     var body: some View {
         ForEach(list, id: \.name) { repo in
-            Text(repo.name)
+            RepoView(repo)
         }
     }
 }
@@ -54,6 +54,18 @@ private struct ListView: View {
 private struct LoadingView: View {
     var body: some View {
         Text("Loading")
+    }
+}
+
+private struct RepoView: View {
+    var repo: Repo
+    
+    init(_ repo: Repo) {
+        self.repo = repo
+    }
+    
+    var body: some View {
+        Text(repo.name)
     }
 }
 
