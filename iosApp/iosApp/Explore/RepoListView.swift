@@ -11,20 +11,29 @@ import ExploreShared
 
 struct RepoListView: View {
     @StateObject var viewModel = RepoListViewModel()
+    var list: [Repo] { self.viewModel.repoList }
+    var isLastPage: Bool { self.viewModel.isLastPage }
 
+    var listView: some View {
+        ForEach(list, id: \.name) { repo in
+            RepoView(repo: repo)
+        }
+    }
+    
+    var loadingView: some View {
+        Text("Loading")
+    }
+    
     var body: some View {
-        let list = self.viewModel.repoList
-        let isLastPage = self.viewModel.isLastPage
-
         ZStack {
             ScrollView(.vertical) {
                 LazyVStack {
                     if !list.isEmpty {
-                        ListView(list)
+                        listView
                     }
                     
                     if !isLastPage {
-                        LoadingView()
+                        loadingView
                             .onAppear {
                                 Task {
                                     await self.viewModel.loadRepos()
@@ -34,38 +43,6 @@ struct RepoListView: View {
                 }
             }
         }
-    }
-}
-
-private struct ListView: View {
-    private var list: [Repo]
-    
-    init(_ list: [Repo]) {
-        self.list = list
-    }
-    
-    var body: some View {
-        ForEach(list, id: \.name) { repo in
-            RepoView(repo)
-        }
-    }
-}
-
-private struct LoadingView: View {
-    var body: some View {
-        Text("Loading")
-    }
-}
-
-private struct RepoView: View {
-    var repo: Repo
-    
-    init(_ repo: Repo) {
-        self.repo = repo
-    }
-    
-    var body: some View {
-        Text(repo.name)
     }
 }
 
