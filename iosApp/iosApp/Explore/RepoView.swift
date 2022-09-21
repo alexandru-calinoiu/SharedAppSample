@@ -13,6 +13,6 @@ struct RepoView: View {
     var repo: Repo
         
     var body: some View {
-        Text(repo.name)
+        
     }
 }

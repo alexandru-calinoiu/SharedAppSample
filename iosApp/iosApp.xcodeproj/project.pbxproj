@@ -11,7 +11,6 @@
 		058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */; };
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
 		91189D264C1E26ACB2724DD7 /* Pods_iosApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2E7EEA9A7CAE99446FD9131 /* Pods_iosApp.framework */; };
-		FAACD18528DAFFA700DBD932 /* RepoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAACD18428DAFFA700DBD932 /* RepoView.swift */; };
 		FAD8720228C238D700293A09 /* RepoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD8720128C238D700293A09 /* RepoListViewModel.swift */; };
 		FAD8720628C2393E00293A09 /* RepoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD8720528C2393E00293A09 /* RepoListView.swift */; };
 /* End PBXBuildFile section */
@@ -25,7 +24,6 @@
 		7555FF7B242A565900829871 /* iosApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A2E7EEA9A7CAE99446FD9131 /* Pods_iosApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iosApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FAACD18428DAFFA700DBD932 /* RepoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoView.swift; sourceTree = "<group>"; };
 		FAD8720128C238D700293A09 /* RepoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoListViewModel.swift; sourceTree = "<group>"; };
 		FAD8720528C2393E00293A09 /* RepoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -118,7 +116,6 @@
 			children = (
 				FAD8720128C238D700293A09 /* RepoListViewModel.swift */,
 				FAD8720528C2393E00293A09 /* RepoListView.swift */,
-				FAACD18428DAFFA700DBD932 /* RepoView.swift */,
 			);
 			name = RepoList;
 			sourceTree = "<group>";
@@ -237,7 +234,6 @@
 			files = (
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				FAD8720228C238D700293A09 /* RepoListViewModel.swift in Sources */,
-				FAACD18528DAFFA700DBD932 /* RepoView.swift in Sources */,
 				FAD8720628C2393E00293A09 /* RepoListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
