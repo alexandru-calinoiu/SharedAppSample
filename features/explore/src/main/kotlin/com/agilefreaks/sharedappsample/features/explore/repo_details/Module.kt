@@ -4,5 +4,5 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val repoDetailsModule = module {
-    viewModel { params -> ViewModel(repoOwner = params.get(), repoName = params.get()) }
+    viewModel { params -> ViewModel(get(), repoOwner = params.get(), repoName = params.get()) }
 }

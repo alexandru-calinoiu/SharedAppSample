@@ -1,0 +1,18 @@
+query RepositoryDetails($repoOwner: String!, $repoNname: String!){
+    repository(owner: $repoOwner, name: $repoNname) {
+        name
+        description
+        forkCount
+        hasIssuesEnabled
+        hasProjectsEnabled
+        hasWikiEnabled
+        homepageUrl
+        labels(first: 10) {
+            nodes {
+                name
+                description
+                color
+            }
+        }
+    }
+}
