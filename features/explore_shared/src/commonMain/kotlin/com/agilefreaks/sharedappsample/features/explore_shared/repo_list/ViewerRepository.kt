@@ -7,8 +7,18 @@ import com.agilefreaks.sharedappsample.features.explore.dtos.ViewerRepositoriesQ
 import com.apollographql.apollo3.ApolloClient
 import com.github.kittinunf.result.Result
 
-class ViewerRepository(private val client: ApolloClient) {
-    suspend fun repos(pageSize: Int = 30, after: String? = null): Result<PagedResponse<Repo>, Throwable> {
+interface ViewerRepository {
+    suspend fun repos(
+        pageSize: Int = 30,
+        after: String? = null
+    ): Result<PagedResponse<Repo>, Throwable>
+}
+
+class ViewerRepositoryImpl(private val client: ApolloClient) : ViewerRepository {
+    override suspend fun repos(
+        pageSize: Int,
+        after: String?
+    ): Result<PagedResponse<Repo>, Throwable> {
         val response = client
             .query(ViewerRepositoriesQuery(pageSize.toOptional(), after.toOptional()))
             .execute()
