@@ -10,7 +10,7 @@ import SwiftUI
 import ExploreShared
 
 struct RepoListView: View {
-    @StateObject var viewModel = RepoListViewModel()
+    @ObservedObject var viewModel: RepoListViewModel
     
     var body: some View {
         ZStack {
@@ -50,8 +50,13 @@ struct RepoListView: View {
     }
 }
 
-struct Screen_Previews: PreviewProvider {
+@MainActor struct Screen_Previews: PreviewProvider {
     static var previews: some View {
-        RepoListView()
+        let viewModel = RepoListViewModel.build([
+            Repo(owner: "Owner", name: "Repo 1", description: "description", primaryLanguage: "Test", lastActivity: nil),
+            Repo(owner: "Owner", name: "Repo Vlad", description: "description", primaryLanguage: "Test", lastActivity: nil)
+        ])
+        RepoListView(viewModel: viewModel)
     }
 }
+

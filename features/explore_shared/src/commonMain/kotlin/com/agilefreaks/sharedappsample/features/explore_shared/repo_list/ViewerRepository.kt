@@ -2,6 +2,7 @@ package com.agilefreaks.sharedappsample.features.explore_shared.repo_list
 
 import com.agilefreaks.sharedappsample.PagedResponse
 import com.agilefreaks.sharedappsample.apollo.toOptional
+import com.agilefreaks.sharedappsample.emptyPageInfo
 import com.agilefreaks.sharedappsample.emptyPagedResponse
 import com.agilefreaks.sharedappsample.features.explore.dtos.ViewerRepositoriesQuery
 import com.apollographql.apollo3.ApolloClient
@@ -12,6 +13,14 @@ interface ViewerRepository {
         pageSize: Int = 30,
         after: String? = null
     ): Result<PagedResponse<Repo>, Throwable>
+}
+
+class FakeViewerRepository(private val repos: List<Repo>) : ViewerRepository {
+    override suspend fun repos(
+        pageSize: Int,
+        after: String?
+    ): Result<PagedResponse<Repo>, Throwable> =
+        Result.success(PagedResponse(emptyPageInfo(), repos))
 }
 
 class ViewerRepositoryImpl(private val client: ApolloClient) : ViewerRepository {
