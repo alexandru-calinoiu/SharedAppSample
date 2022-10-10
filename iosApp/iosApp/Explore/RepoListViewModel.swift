@@ -18,12 +18,7 @@ import ExploreShared
     var isLastPage: Bool = false
     var lastCursor: String? = nil
     
-    class func build(_ repos: [Repo]) -> RepoListViewModel {
-        let viewModelRepos = [
-            Repo(owner: "Owner", name: "Repo 1'", description: "description", primaryLanguage: "Test", lastActivity: nil),
-            Repo(owner: "Owner", name: "Repo Vlad'", description: "description", primaryLanguage: "Test", lastActivity: nil)
-        ]
-        
+    static func build(_ repos: [Repo]) -> RepoListViewModel {        
         return RepoListViewModel(viewerRepo: FakeViewerRepository(repos: repos))
     }
     

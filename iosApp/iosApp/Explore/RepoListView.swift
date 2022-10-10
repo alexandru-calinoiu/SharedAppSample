@@ -16,7 +16,9 @@ struct RepoListView: View {
         ZStack {
             ScrollView(.vertical) {
                 LazyVStack {
-                    if !self.viewModel.repoList.isEmpty {
+                    if self.viewModel.repoList.isEmpty {
+                        emptyList
+                    } else {
                         listView
                     }
                     
@@ -48,15 +50,21 @@ struct RepoListView: View {
     private func repoView(_ repo: Repo) -> some View {
         Text(repo.name)
     }
-}
-
-@MainActor struct Screen_Previews: PreviewProvider {
-    static var previews: some View {
-        let viewModel = RepoListViewModel.build([
-            Repo(owner: "Owner", name: "Repo 1", description: "description", primaryLanguage: "Test", lastActivity: nil),
-            Repo(owner: "Owner", name: "Repo Vlad", description: "description", primaryLanguage: "Test", lastActivity: nil)
-        ])
-        RepoListView(viewModel: viewModel)
+    
+    private var emptyList: some View {
+        Text("No repos yet")
     }
 }
 
+struct Screen_Previews: PreviewProvider {
+    static let repos = [
+        Repo(owner: "Owner", name: "Repo 1", description: "description", primaryLanguage: "Test", lastActivity: nil),
+        Repo(owner: "Owner", name: "Repo Vlad", description: "description", primaryLanguage: "Test", lastActivity: nil)
+    ]
+    
+    static let viewModel = RepoListViewModel.build(repos)
+    
+    static var previews: some View {
+        RepoListView(viewModel: viewModel)
+    }
+}
