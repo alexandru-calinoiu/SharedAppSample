@@ -40,7 +40,7 @@ object Dependencies {
         }
 
         object Compose {
-            const val VERSION = "1.3.0"
+            const val VERSION = "1.3.2"
 
             const val UI = "androidx.compose.ui:ui:1.2.1"
 
@@ -70,13 +70,10 @@ object Dependencies {
             private const val VERSION = "2.5.1"
 
             const val VIEWMODEL = "androidx.lifecycle:lifecycle-viewmodel-ktx:$VERSION"
-            // ViewModel utilities for Compose
             const val VIEWMODEL_COMPOSE = "androidx.lifecycle:lifecycle-viewmodel-compose:$VERSION"
             const val LIVEDATA = "androidx.lifecycle:lifecycle-livedata-ktx:$VERSION"
             // Lifecycles only (without ViewModel or LiveData)
             const val RUNTIME_KTX =  "androidx.lifecycle:lifecycle-runtime-ktx:$VERSION"
-            // if using Java8, use the following instead of lifecycle-compiler
-            const val COMMON_JAVA8 = "androidx.lifecycle:lifecycle-common-java8:$VERSION"
         }
     }
 
