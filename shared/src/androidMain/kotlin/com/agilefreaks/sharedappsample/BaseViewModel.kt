@@ -9,14 +9,10 @@ import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
-interface ViewState
-
-interface ViewEvent
-
-interface ViewSideEffect
-
-abstract class BaseViewModel<Event : ViewEvent, UiState : ViewState, Effect : ViewSideEffect> :
+actual abstract class BaseViewModel<Event : ViewEvent, UiState : ViewState, Effect : ViewSideEffect> :
     ViewModel() {
+
+    actual val scope = viewModelScope
 
     private val initialState: UiState by lazy { setInitialState() }
     abstract fun setInitialState(): UiState
@@ -33,8 +29,11 @@ abstract class BaseViewModel<Event : ViewEvent, UiState : ViewState, Effect : Vi
         subscribeToEvents()
     }
 
+    actual override fun onCleared() {
+    }
+
     fun setEvent(event: Event) {
-        viewModelScope.launch { _event.emit(event) }
+        scope.launch { _event.emit(event) }
     }
 
     protected fun setState(reducer: UiState.() -> UiState) {
@@ -43,7 +42,7 @@ abstract class BaseViewModel<Event : ViewEvent, UiState : ViewState, Effect : Vi
     }
 
     private fun subscribeToEvents() {
-        viewModelScope.launch {
+        scope.launch {
             _event.collect {
                 handleEvents(it)
             }
@@ -54,7 +53,6 @@ abstract class BaseViewModel<Event : ViewEvent, UiState : ViewState, Effect : Vi
 
     protected fun setEffect(builder: () -> Effect) {
         val effectValue = builder()
-        viewModelScope.launch { _effect.send(effectValue) }
+        scope.launch { _effect.send(effectValue) }
     }
-
 }
