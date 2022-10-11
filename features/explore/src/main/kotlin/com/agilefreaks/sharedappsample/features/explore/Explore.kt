@@ -1,5 +1,6 @@
 package com.agilefreaks.sharedappsample.features.explore
 
+import androidx.compose.runtime.collectAsState
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
@@ -28,7 +29,7 @@ fun NavGraphBuilder.explore(navHostController: NavHostController) {
         composable(route = ExploreDestinations.Landing.route) {
             val landingViewModel: RepoListViewModel = getViewModel()
             RepoListScreen(
-                state = landingViewModel.viewState.value,
+                state = landingViewModel.viewState.collectAsState().value,
                 effects = landingViewModel.effect,
                 onNavigate = {
                     when (it) {
@@ -46,7 +47,7 @@ fun NavGraphBuilder.explore(navHostController: NavHostController) {
             val (repoOwner, repoName) = it.arguments.parseDetailsArgs()
             val detailsViewModel: RepoDetailsViewModel = getViewModel { parametersOf(repoOwner, repoName) }
             RepoDetailsScreen(
-                state = detailsViewModel.viewState.value,
+                state = detailsViewModel.viewState.collectAsState().value,
                 effects = detailsViewModel.effect
             ) {
                 detailsViewModel.setEvent(it)
