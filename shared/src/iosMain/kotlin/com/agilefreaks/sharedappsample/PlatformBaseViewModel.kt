@@ -4,7 +4,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 
-actual abstract class PlatformBaseViewModel<Event : ViewEvent, UiState : ViewState, Effect : ViewSideEffect> {
+actual abstract class PlatformBaseViewModel {
     private var hasCleared = false
 
     actual val scope: CoroutineScope by lazy {
