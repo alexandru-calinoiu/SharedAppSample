@@ -9,28 +9,30 @@
 import SwiftUI
 import ExploreShared
 
+extension [Repo] {
+    func asIdentifiable() -> [IdentifiebleRepo] {
+        return self.map { IdentifiebleRepo($0) }
+    }
+}
+
+struct IdentifiebleRepo : Identifiable {
+    var id: String { self.repo.name }
+    let repo: Repo
+    
+    init(_ repo: Repo) {
+        self.repo = repo
+    }
+}
+
 struct RepoListView: View {
     @ObservedObject var viewModel: RepoListViewModel
     
     var body: some View {
-        ZStack {
-            ScrollView(.vertical) {
-                LazyVStack {
-                    if self.viewModel.repoList.isEmpty {
-                        emptyList
-                    } else {
-                        listView
-                    }
-                    
-                    if !self.viewModel.isLastPage {
-                        loadingView
-                            .onAppear {
-                                Task {
-                                    await self.viewModel.loadRepos()
-                                }
-                            }
-                    }
-                }
+        let loadMore: (Repo?) -> Void = { repo in Task { await viewModel.loadRepos(repo) } }
+        
+        List(viewModel.repoList.asIdentifiable()) { iRepo in
+            repoView(iRepo.repo).onAppear {
+                loadMore(iRepo.repo)
             }
         }
     }

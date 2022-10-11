@@ -17,8 +17,9 @@ import ExploreShared
     var viewerRepo: ViewerRepository
     var isLastPage: Bool = false
     var lastCursor: String? = nil
+    var loadingCursor: String? = nil
     
-    static func build(_ repos: [Repo]) -> RepoListViewModel {        
+    static func build(_ repos: [Repo]) -> RepoListViewModel {
         return RepoListViewModel(viewerRepo: FakeViewerRepository(repos: repos))
     }
     
@@ -28,21 +29,47 @@ import ExploreShared
     
     init(viewerRepo: ViewerRepository) {
         self.viewerRepo = viewerRepo
+        
+        Task {
+            await self.loadRepos(nil)
+        }
     }
     
-    func loadRepos() async {
+    func loadRepos(_ repo: Repo?) async {
+        if (isLoadingCurrentCursor() || self.isLastPage || isNotLast(repo)) {
+            return
+        }
+        
+        self.loadingCursor = self.lastCursor
+        
         do {
             let result = try await self.viewerRepo.repos(pageSize: pageSize, after: lastCursor)
             result.fold(
                 success: { pagedResponse in self.handleSuccessResponse(pagedResponse: pagedResponse) },
-                failure: { (err: KotlinThrowable) -> () in print(err)} )
+                failure: { (err: KotlinThrowable) -> () in print(err) } )
         } catch {
             print(error)
         }
     }
     
+    private func isLoadingCurrentCursor() -> Bool {
+        self.loadingCursor == self.lastCursor && self.lastCursor != nil
+    }
+    
+    private func isNotLast(_ repo: Repo?) -> Bool {
+        self.repoList.last != repo
+    }
+    
     private func handleSuccessResponse(pagedResponse: SharedPagedResponse<Repo>?) {
-        self.repoList.append(contentsOf: pagedResponse?.response as? [Repo] ?? [])
+        var elementsToAppend: [Repo] = []
+        (pagedResponse?.response as? [Repo] ?? []).forEach { repo in
+            if !self.repoList.contains(where: { r in
+                r.name == repo.name
+            }) {
+                elementsToAppend.append(repo)
+            }
+        }
+        self.repoList.append(contentsOf: elementsToAppend)
         if let pageInfo = pagedResponse?.pageInfo {
             self.lastCursor = pageInfo.endCursor
             self.isLastPage = !pageInfo.hasNextPage
