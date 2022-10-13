@@ -20,7 +20,7 @@ expect abstract class PlatformBaseViewModel() {
     protected open fun onCleared()
 }
 
-abstract class BaseViewModel<Event : ViewEvent, UiState : ViewState, Effect : ViewSideEffect>:
+abstract class BaseViewModel<Event : ViewEvent, UiState : ViewState, Effect : ViewSideEffect> :
     PlatformBaseViewModel() {
 
     private val initialState: UiState by lazy { setInitialState() }
