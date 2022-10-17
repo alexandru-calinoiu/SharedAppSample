@@ -9,20 +9,12 @@
 import SwiftUI
 import ExploreShared
 
-extension [Repo] {
-    func asIdentifiable() -> [IdentifiebleRepo] {
-        return self.map { IdentifiebleRepo($0) }
+extension Repo: Identifiable {
+    public var id: String {
+        self.name
     }
 }
 
-struct IdentifiebleRepo : Identifiable {
-    var id: String { self.repo.name }
-    let repo: Repo
-    
-    init(_ repo: Repo) {
-        self.repo = repo
-    }
-}
 
 struct RepoListView: View {
     @ObservedObject var viewModel: RepoListViewModel
@@ -30,9 +22,9 @@ struct RepoListView: View {
     var body: some View {
         let loadMore: (Repo?) -> Void = { repo in Task { await viewModel.loadRepos(repo) } }
         
-        List(viewModel.repoList.asIdentifiable()) { iRepo in
-            repoView(iRepo.repo).onAppear {
-                loadMore(iRepo.repo)
+        List(viewModel.repoList) { repo in
+            repoView(repo).onAppear {
+                loadMore(repo)
             }
         }
     }
