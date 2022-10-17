@@ -9,13 +9,6 @@
 import SwiftUI
 import ExploreShared
 
-extension Repo: Identifiable {
-    public var id: String {
-        self.name
-    }
-}
-
-
 struct RepoListView: View {
     @ObservedObject var viewModel: RepoListViewModel
     
