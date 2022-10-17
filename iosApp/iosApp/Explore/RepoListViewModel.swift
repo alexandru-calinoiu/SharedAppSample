@@ -9,8 +9,6 @@
 import Foundation
 import ExploreShared
 
-extension Repo: Identifiable {}
-
 @MainActor final class RepoListViewModel: ObservableObject {
     @Published var repoList: [Repo] = []
     
