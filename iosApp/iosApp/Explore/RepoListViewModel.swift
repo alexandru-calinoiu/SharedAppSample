@@ -9,6 +9,8 @@
 import Foundation
 import ExploreShared
 
+extension Repo: Identifiable {}
+
 @MainActor final class RepoListViewModel: ObservableObject {
     @Published var repoList: [Repo] = []
     
@@ -61,15 +63,14 @@ import ExploreShared
     }
     
     private func handleSuccessResponse(pagedResponse: SharedPagedResponse<Repo>?) {
-        var elementsToAppend: [Repo] = []
         (pagedResponse?.response as? [Repo] ?? []).forEach { repo in
             if !self.repoList.contains(where: { r in
                 r.name == repo.name
             }) {
-                elementsToAppend.append(repo)
+                self.repoList.append(repo)
             }
         }
-        self.repoList.append(contentsOf: elementsToAppend)
+        
         if let pageInfo = pagedResponse?.pageInfo {
             self.lastCursor = pageInfo.endCursor
             self.isLastPage = !pageInfo.hasNextPage
