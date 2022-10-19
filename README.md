@@ -28,3 +28,4 @@ TODO
 - [ ] Details screen implementation (Cipi)
 - [ ] Add bottom navigation (Denis)
 - [ ] Profile feature (Robert)
+- [ ] Consider using https://github.com/icerockdev/moko-mvvm to share view models

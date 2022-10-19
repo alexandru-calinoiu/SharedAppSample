@@ -1,7 +1,7 @@
 query ViewerRepositories($pageSize: Int, $afterCursor: String){
     viewer {
         name
-        repositories(first: $pageSize, after: $afterCursor) {
+        repositories(first: $pageSize, after: $afterCursor, orderBy: { field: PUSHED_AT, direction: DESC }) {
             pageInfo {
                 startCursor
                 endCursor
@@ -10,6 +10,7 @@ query ViewerRepositories($pageSize: Int, $afterCursor: String){
             }
             edges {
                 node {
+                    id
                     owner {
                         login
                     }
