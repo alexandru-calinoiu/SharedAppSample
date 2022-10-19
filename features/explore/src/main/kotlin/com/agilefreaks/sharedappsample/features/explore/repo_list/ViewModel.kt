@@ -15,7 +15,7 @@ class ViewModel(private val viewerRepository: ViewerRepository) : BaseViewModel<
     override fun setInitialState(): State = State(repos = fetchRepos())
 
     private fun fetchRepos(): Flow<PagingData<Repo>> =
-        Pager(PagingConfig(pageSize = 20)) {
+        Pager(PagingConfig(pageSize = PAGE_SIZE)) {
             RepoPagingSource(viewerRepository)
         }.flow.cachedIn(viewModelScope)
 }
