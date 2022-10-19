@@ -1,0 +1,6 @@
+query ViewerProfile{
+    viewer {
+        avatarUrl
+        bio
+    }
+}
