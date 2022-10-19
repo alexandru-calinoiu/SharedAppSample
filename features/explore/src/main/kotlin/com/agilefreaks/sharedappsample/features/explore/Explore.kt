@@ -44,7 +44,8 @@ fun NavGraphBuilder.explore(navHostController: NavHostController) {
             arguments = ExploreDestinations.Details().navArgs()
         ) {
             val (repoOwner, repoName) = it.arguments.parseDetailsArgs()
-            val detailsViewModel: RepoDetailsViewModel = getViewModel { parametersOf(repoOwner, repoName) }
+            val detailsViewModel: RepoDetailsViewModel =
+                getViewModel { parametersOf(repoOwner, repoName) }
             RepoDetailsScreen(
                 state = detailsViewModel.viewState.value,
                 effects = detailsViewModel.effect

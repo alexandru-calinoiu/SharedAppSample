@@ -1,5 +1,7 @@
 package commons
 
+import BuildAndroidConfig
+import BuildModules
 import dependencies.Dependencies
 import dependencies.TestAndroidDependencies
 import dependencies.TestDependencies
@@ -85,6 +87,8 @@ dependencies {
 
     implementation(Dependencies.AndroidX.Navigation.COMPOSE)
     implementation(Dependencies.AndroidX.Navigation.UI)
+
+    implementation(Dependencies.Coil.COMPOSE)
 
     debugImplementation(Dependencies.AndroidX.CUSTOM_VIEW_POOLINGCONTAINER)
 

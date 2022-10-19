@@ -91,4 +91,10 @@ object Dependencies {
         const val ANDROID = "io.insert-koin:koin-android:$VERSION"
         const val COMPOSE = "io.insert-koin:koin-androidx-compose:$VERSION"
     }
+
+    object Coil {
+        private const val VERSION = "2.2.1"
+
+        const val COMPOSE = "io.coil-kt:coil-compose:$VERSION"
+    }
 }
