@@ -8,27 +8,50 @@
 
 import SwiftUI
 import ExploreShared
+import Shared
+
+class ViewModelWrapper : ObservableObject {
+    @Published public var state: RepoListState = .init(repos: [], lastCursor: nil, isLastPage: false)
+
+    var viewModel: ExploreShared.RepoListViewModel
+    var stateWatcher: SharedCloseable? = nil
+
+    init(_ viewModel: ExploreShared.RepoListViewModel) {
+        self.viewModel = viewModel
+        stateWatcher = viewModel.setStateObserver { state in
+            print(state.repos)
+            self.state = state
+        }
+    }
+    
+    deinit {
+        stateWatcher?.close_()
+        viewModel.onCleared()
+    }
+}
 
 struct RepoListView: View {
-    @ObservedObject var viewModel: RepoListViewModel
+    @ObservedObject var wViewModel: ViewModelWrapper
     
     var body: some View {
-        let loadMore: (Repo?) -> Void = { repo in Task { await viewModel.loadRepos(repo) } }
+        let loadMore: (Repo?) -> Void = { repo in Task { wViewModel.viewModel.fetchRepos(repo: repo) } }
         
-        List(viewModel.repoList) { repo in
+        List(wViewModel.state.repos) { repo in
             repoView(repo).onAppear {
                 loadMore(repo)
             }
+        }.onAppear {
+            loadMore(nil)
         }
     }
     
     // MARK: - Subviews
     
-    private var listView: some View {
-        ForEach(self.viewModel.repoList, id: \.name) { repo in
-            repoView(repo)
-        }
-    }
+//    private var listView: some View {
+//        ForEach(self.viewModel.repoList, id: \.name) { repo in
+//            repoView(repo)
+//        }
+//    }
     
     private var loadingView: some View {
         Text("Loading")
@@ -52,6 +75,7 @@ struct Screen_Previews: PreviewProvider {
     static let viewModel = RepoListViewModel.build(repos)
     
     static var previews: some View {
-        RepoListView(viewModel: viewModel)
+        EmptyView()
+//        RepoListView(viewModel: viewModel)
     }
 }

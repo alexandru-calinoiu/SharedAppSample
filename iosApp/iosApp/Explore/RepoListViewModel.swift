@@ -24,7 +24,7 @@ import ExploreShared
     }
     
     static func buildReal() -> RepoListViewModel {
-        RepoListViewModel(viewerRepo: RepositoryHelper().viewerRepository())
+        RepoListViewModel(viewerRepo: FakeViewerRepository(repos: []))
     }
     
     init(viewerRepo: ViewerRepository) {

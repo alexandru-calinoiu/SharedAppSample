@@ -2,8 +2,8 @@ package com.agilefreaks.sharedappsample.features.explore_shared.repo_list
 
 import kotlinx.coroutines.launch
 
-class ViewModel(private val viewerRepository: ViewerRepository) : BaseViewModel<State>() {
-    override fun setInitialState(): State = State(repos = emptyList(), lastCursor = null)
+class RepoListViewModel(private val viewerRepository: ViewerRepository) : BaseViewModel<RepoListState>() {
+    override fun setInitialState(): RepoListState = RepoListState(repos = emptyList(), lastCursor = null)
 
     fun fetchRepos(repo: Repo?) {
         if (viewState.value.isLastPage && isNotLast(repo)) {
@@ -25,6 +25,8 @@ class ViewModel(private val viewerRepository: ViewerRepository) : BaseViewModel<
                         isLastPage = !(pageInfo?.hasNextPage ?: true)
                     )
                 }
+            } else {
+                throw error ?: Exception("Unknown exception")
             }
         }
     }

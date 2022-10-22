@@ -1,7 +1,7 @@
 package com.agilefreaks.sharedappsample.features.explore_shared
 
 import com.agilefreaks.sharedappsample.di.dataModule
-import com.agilefreaks.sharedappsample.features.explore_shared.repo_list.ViewModel
+import com.agilefreaks.sharedappsample.features.explore_shared.repo_list.RepoListViewModel
 import com.agilefreaks.sharedappsample.features.explore_shared.repo_list.ViewerRepository
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
@@ -23,5 +23,5 @@ fun initKoin(properties: Map<String, String>) {
 class ViewModelHelper() : KoinComponent {
     private val viewerRepository: ViewerRepository by inject()
 
-    fun viewModel(): ViewModel = ViewModel(viewerRepository)
+    fun viewModel(): RepoListViewModel = RepoListViewModel(viewerRepository)
 }

@@ -1,12 +1,8 @@
 package com.agilefreaks.sharedappsample
 
-import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.receiveAsFlow
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.*
 
 interface ViewState
 
@@ -18,6 +14,10 @@ expect abstract class PlatformBaseViewModel() {
     val scope: CoroutineScope
 
     protected open fun onCleared()
+}
+
+interface Closeable {
+    fun close()
 }
 
 abstract class BaseViewModel<Event : ViewEvent, UiState : ViewState, Effect : ViewSideEffect> :
@@ -45,6 +45,20 @@ abstract class BaseViewModel<Event : ViewEvent, UiState : ViewState, Effect : Vi
     protected fun setState(reducer: UiState.() -> UiState) {
         scope.launch {
             _viewState.emit(viewState.value.reducer())
+        }
+    }
+
+    fun setStateObserver(onStateChanged: ((UiState) -> Unit)) : Closeable {
+        val job = Job()
+
+        _viewState.onEach {
+            onStateChanged(it)
+        }.launchIn(scope.plus(job))
+
+        return object : Closeable {
+            override fun close() {
+                job.cancel()
+            }
         }
     }
 
