@@ -2,11 +2,16 @@ package com.agilefreaks.sharedappsample.features.explore_shared.repo_list
 
 import kotlinx.coroutines.launch
 
-class RepoListViewModel(private val viewerRepository: ViewerRepository) : BaseViewModel<RepoListState>() {
-    override fun setInitialState(): RepoListState = RepoListState(repos = emptyList(), lastCursor = null)
+class RepoListViewModel(private val viewerRepository: ViewerRepository) :
+    BaseViewModel<RepoListState>() {
+    private var cursorBeingFetched:  String = ""
 
+    override fun setInitialState(): RepoListState =
+        RepoListState(repos = emptyList(), lastCursor = null)
+
+    @Throws(Exception::class)
     fun fetchRepos(repo: Repo?) {
-        if (viewState.value.isLastPage && isNotLast(repo)) {
+        if (viewState.value.isLastPage && isNotLast(repo) && currentCursorIsNotBeingFetched()) {
             return
         }
 
@@ -16,7 +21,9 @@ class RepoListViewModel(private val viewerRepository: ViewerRepository) : BaseVi
                 after = viewState.value.lastCursor
             )
 
-            if (error != null) {
+            println(viewState.value.lastCursor)
+
+            if (error == null) {
                 val pageInfo = response?.pageInfo
                 setState {
                     copy(
@@ -26,10 +33,12 @@ class RepoListViewModel(private val viewerRepository: ViewerRepository) : BaseVi
                     )
                 }
             } else {
-                throw error ?: Exception("Unknown exception")
+                throw Exception(error)
             }
         }
     }
 
     private fun isNotLast(repo: Repo?) = viewState.value.repos.last() != repo
+
+    private fun currentCursorIsNotBeingFetched() = viewState.value.lastCursor != cursorBeingFetched
 }
