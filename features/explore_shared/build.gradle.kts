@@ -32,6 +32,7 @@ kotlin {
         val androidMain by getting {
             dependencies {
                 implementation(Dependencies.AndroidX.Navigation.COMPOSE)
+                implementation(Dependencies.AndroidX.Paging.RUNTIME)
             }
         }
     }

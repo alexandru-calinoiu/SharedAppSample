@@ -13,24 +13,24 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavHostController
 import androidx.paging.LoadState
 import androidx.paging.LoadStates
 import androidx.paging.PagingData
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.items
-import com.agilefreaks.sharedappsample.AppDestinations
 import com.agilefreaks.sharedappsample.features.explore.R
+import com.agilefreaks.sharedappsample.features.explore_shared.repo_list.Contract
 import com.agilefreaks.sharedappsample.features.explore_shared.repo_list.Repo
 import com.agilefreaks.sharedappsample.ui.HandleEffects
 import com.agilefreaks.sharedappsample.ui.PagingView
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.emptyFlow
 import kotlinx.coroutines.flow.flowOf
+import com.agilefreaks.sharedappsample.features.explore_shared.repo_list.State
 
 @Composable
 fun Screen(
-    state: Contract.State,
+    state: State,
     effects: Flow<Contract.Effect>,
     onNavigate: (Contract.Effect.Navigation) -> Unit,
     onSendEvent: (Contract.Event) -> Unit
@@ -96,7 +96,7 @@ private fun Loading(modifier: Modifier = Modifier) {
 @Composable
 fun LoadingScreenPreview() {
     Screen(
-        state = Contract.State(
+        state = State(
             repos = flowOf(
                 PagingData.empty(
                     LoadStates(
@@ -132,7 +132,7 @@ fun ItemScreenPreview() {
         )
     )
     Screen(
-        state = Contract.State(
+        state = State(
             repos = flowOf(
                 PagingData.from(repos)
             )

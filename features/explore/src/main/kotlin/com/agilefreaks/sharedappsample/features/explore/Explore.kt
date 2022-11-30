@@ -1,5 +1,6 @@
 package com.agilefreaks.sharedappsample.features.explore
 
+import androidx.compose.runtime.collectAsState
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
@@ -16,9 +17,9 @@ import org.koin.core.parameter.parametersOf
 import parseDetailsArgs
 import com.agilefreaks.sharedappsample.features.explore.repo_details.Screen as RepoDetailsScreen
 import com.agilefreaks.sharedappsample.features.explore.repo_details.ViewModel as RepoDetailsViewModel
-import com.agilefreaks.sharedappsample.features.explore.repo_list.Contract as RepoListContract
 import com.agilefreaks.sharedappsample.features.explore.repo_list.Screen as RepoListScreen
 import com.agilefreaks.sharedappsample.features.explore.repo_list.ViewModel as RepoListViewModel
+import com.agilefreaks.sharedappsample.features.explore_shared.repo_list.Contract as RepoListContract
 
 fun NavGraphBuilder.explore(navHostController: NavHostController) {
     navigation(
@@ -28,7 +29,7 @@ fun NavGraphBuilder.explore(navHostController: NavHostController) {
         composable(route = ExploreDestinations.Landing.route) {
             val landingViewModel: RepoListViewModel = getViewModel()
             RepoListScreen(
-                state = landingViewModel.viewState.value,
+                state = landingViewModel.viewState.collectAsState().value,
                 effects = landingViewModel.effect,
                 onNavigate = {
                     when (it) {
@@ -44,13 +45,12 @@ fun NavGraphBuilder.explore(navHostController: NavHostController) {
             arguments = ExploreDestinations.Details().navArgs()
         ) {
             val (repoOwner, repoName) = it.arguments.parseDetailsArgs()
-            val detailsViewModel: RepoDetailsViewModel = getViewModel { parametersOf(repoOwner, repoName) }
+            val detailsViewModel: RepoDetailsViewModel =
+                getViewModel { parametersOf(repoOwner, repoName) }
             RepoDetailsScreen(
-                state = detailsViewModel.viewState.value,
+                state = detailsViewModel.viewState.collectAsState().value,
                 effects = detailsViewModel.effect
-            ) {
-                detailsViewModel.setEvent(it)
-            }
+            ) { event -> detailsViewModel.setEvent(event) }
         }
     }
 }

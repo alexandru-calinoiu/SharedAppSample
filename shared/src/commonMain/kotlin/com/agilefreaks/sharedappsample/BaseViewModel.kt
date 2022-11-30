@@ -1,13 +1,8 @@
 package com.agilefreaks.sharedappsample
 
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.State
-import androidx.compose.runtime.mutableStateOf
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.*
-import kotlinx.coroutines.launch
 
 interface ViewState
 
@@ -15,14 +10,24 @@ interface ViewEvent
 
 interface ViewSideEffect
 
+expect abstract class PlatformBaseViewModel() {
+    val scope: CoroutineScope
+
+    protected open fun onCleared()
+}
+
+interface Closeable {
+    fun close()
+}
+
 abstract class BaseViewModel<Event : ViewEvent, UiState : ViewState, Effect : ViewSideEffect> :
-    ViewModel() {
+    PlatformBaseViewModel() {
 
     private val initialState: UiState by lazy { setInitialState() }
     abstract fun setInitialState(): UiState
 
-    private val _viewState: MutableState<UiState> = mutableStateOf(initialState)
-    val viewState: State<UiState> = _viewState
+    private val _viewState: MutableStateFlow<UiState> = MutableStateFlow(initialState)
+    val viewState: StateFlow<UiState> = _viewState
 
     private val _event: MutableSharedFlow<Event> = MutableSharedFlow()
 
@@ -34,16 +39,31 @@ abstract class BaseViewModel<Event : ViewEvent, UiState : ViewState, Effect : Vi
     }
 
     fun setEvent(event: Event) {
-        viewModelScope.launch { _event.emit(event) }
+        scope.launch { _event.emit(event) }
     }
 
     protected fun setState(reducer: UiState.() -> UiState) {
-        val newState = viewState.value.reducer()
-        _viewState.value = newState
+        scope.launch {
+            _viewState.emit(viewState.value.reducer())
+        }
+    }
+
+    fun setStateObserver(onStateChanged: ((UiState) -> Unit)) : Closeable {
+        val job = Job()
+
+        _viewState.onEach {
+            onStateChanged(it)
+        }.launchIn(scope.plus(job))
+
+        return object : Closeable {
+            override fun close() {
+                job.cancel()
+            }
+        }
     }
 
     private fun subscribeToEvents() {
-        viewModelScope.launch {
+        scope.launch {
             _event.collect {
                 handleEvents(it)
             }
@@ -54,7 +74,8 @@ abstract class BaseViewModel<Event : ViewEvent, UiState : ViewState, Effect : Vi
 
     protected fun setEffect(builder: () -> Effect) {
         val effectValue = builder()
-        viewModelScope.launch { _effect.send(effectValue) }
+        scope.launch { _effect.send(effectValue) }
     }
-
 }
+
+

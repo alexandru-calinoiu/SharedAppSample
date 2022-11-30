@@ -13,7 +13,7 @@ struct iOSApp: App {
     
     var body: some Scene {
         WindowGroup {
-            RepoListView(viewModel: RepoListViewModel.buildReal())
+            RepoListView(viewModel: RepoListViewModel.init(ViewModelHelper().viewModel()))
         }
     }
 }

@@ -8,27 +8,26 @@
 
 import SwiftUI
 import ExploreShared
+import Shared
 
 struct RepoListView: View {
     @ObservedObject var viewModel: RepoListViewModel
     
     var body: some View {
-        let loadMore: (Repo?) -> Void = { repo in Task { await viewModel.loadRepos(repo) } }
+        let loadMore: (Repo?) -> Void = { repo in Task {
+            try viewModel.viewModel.fetchRepos(repo: repo)
+        }}
         
-        List(viewModel.repoList) { repo in
+        List(viewModel.state.repos) { repo in
             repoView(repo).onAppear {
                 loadMore(repo)
             }
+        }.onAppear {
+            loadMore(nil)
         }
     }
     
     // MARK: - Subviews
-    
-    private var listView: some View {
-        ForEach(self.viewModel.repoList, id: \.name) { repo in
-            repoView(repo)
-        }
-    }
     
     private var loadingView: some View {
         Text("Loading")
@@ -49,9 +48,10 @@ struct Screen_Previews: PreviewProvider {
         Repo(owner: "Owner", name: "Repo Vlad", description: "description", primaryLanguage: "Test", lastActivity: nil)
     ]
     
-    static let viewModel = RepoListViewModel.build(repos)
+//    static let viewModel = RepoListViewModel.build(repos)
     
     static var previews: some View {
-        RepoListView(viewModel: viewModel)
+        EmptyView()
+//        RepoListView(viewModel: viewModel)
     }
 }
