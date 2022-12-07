@@ -4,8 +4,9 @@ import dependencies.TestAndroidDependencies
 import extensions.addProductFlavours
 
 plugins {
-    id("com.android.application")
-    kotlin("android")
+    plugin(BuildPlugins.androidApplication)
+    plugin(BuildPlugins.kotlinAndroid)
+    plugin(BuildPlugins.kotlinKapt)
 }
 
 android {

@@ -1,19 +1,19 @@
 Pod::Spec.new do |spec|
     spec.name                     = 'profile_shared'
     spec.version                  = '1.0'
-    spec.homepage                 = 'Link to the Shared Module homepage'
+    spec.homepage                 = 'https://github.com/alexandru-calinoiu/SharedAppSample'
     spec.source                   = { :http=> ''}
     spec.authors                  = ''
     spec.license                  = ''
-    spec.summary                  = 'Some description for the Shared Module'
-    spec.vendored_frameworks      = 'build/cocoapods/framework/profile_shared.framework'
+    spec.summary                  = 'Stuff related to the user profile'
+    spec.vendored_frameworks      = 'build/cocoapods/framework/ProfileShared.framework'
     spec.libraries                = 'c++'
     spec.ios.deployment_target = '14.1'
                 
                 
     spec.pod_target_xcconfig = {
         'KOTLIN_PROJECT_PATH' => ':features:profile_shared',
-        'PRODUCT_MODULE_NAME' => 'profile_shared',
+        'PRODUCT_MODULE_NAME' => 'ProfileShared',
     }
                 
     spec.script_phases = [
