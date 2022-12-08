@@ -10,7 +10,7 @@ repositories {
 
 object PluginsVersions {
     const val GRADLE_ANDROID = "7.3.1"
-    const val KOTLIN = "1.7.20"
+    const val KOTLIN = "1.7.22"
 
     const val KTLINT = "0.36.0"
     const val DETEKT = "1.2.2"
