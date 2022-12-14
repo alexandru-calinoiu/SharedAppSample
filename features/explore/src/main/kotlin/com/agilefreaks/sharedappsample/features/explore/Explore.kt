@@ -50,7 +50,7 @@ fun NavGraphBuilder.explore(navHostController: NavHostController) {
             RepoDetailsScreen(
                 state = detailsViewModel.viewState.collectAsState().value,
                 effects = detailsViewModel.effect
-            ) { event -> detailsViewModel.setEvent(event) }
+            )
         }
     }
 }

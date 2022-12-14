@@ -40,7 +40,7 @@ object Dependencies {
         }
 
         object Compose {
-            const val VERSION = "1.3.1"
+            const val VERSION = "1.3.2"
 
             const val UI = "androidx.compose.ui:ui:1.3.1"
 

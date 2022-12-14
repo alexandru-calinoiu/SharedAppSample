@@ -39,5 +39,7 @@ kotlin {
 }
 
 apollo {
-    packageName.set("com.agilefreaks.sharedappsample.features.explore.dtos")
+    service("github") {
+        packageName.set("com.agilefreaks.sharedappsample.features.explore.dtos")
+    }
 }

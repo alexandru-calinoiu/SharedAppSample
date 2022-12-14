@@ -36,7 +36,9 @@ kotlin {
 }
 
 apollo {
-    packageName.set("com.agilefreaks.sharedappsample.dtos")
-    generateApolloMetadata.set(true)
-    mapScalar("DateTime", "kotlinx.datetime.Instant", "com.apollographql.apollo3.adapter.KotlinxInstantAdapter")
+    service("github") {
+        packageName.set("com.agilefreaks.sharedappsample.dtos")
+        generateApolloMetadata.set(true)
+        mapScalar("DateTime", "kotlinx.datetime.Instant", "com.apollographql.apollo3.adapter.KotlinxInstantAdapter")
+    }
 }
