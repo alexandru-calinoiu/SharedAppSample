@@ -11,6 +11,7 @@ plugins {
 
 android {
     compileSdk = BuildAndroidConfig.COMPILE_SDK_VERSION
+    namespace = "com.agilefreaks.sharedappsample.android"
 
     defaultConfig {
         applicationId = BuildAndroidConfig.APPLICATION_ID
@@ -79,7 +80,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = Dependencies.AndroidX.Compose.VERSION
+        kotlinCompilerExtensionVersion  = Dependencies.AndroidX.Compose.VERSION
     }
 }
 

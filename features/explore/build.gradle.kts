@@ -6,6 +6,8 @@ plugins {
 
 android {
     addProductFlavours(this)
+
+    namespace = "com.agilefreaks.sharedappsample.features.explore"
 }
 
 dependencies {

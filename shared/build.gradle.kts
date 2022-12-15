@@ -35,6 +35,10 @@ kotlin {
     }
 }
 
+android {
+    namespace = "com.agilefreaks.sharedappsample"
+}
+
 apollo {
     service("github") {
         packageName.set("com.agilefreaks.sharedappsample.dtos")

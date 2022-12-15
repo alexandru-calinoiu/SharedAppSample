@@ -1,3 +1,5 @@
+package com.agilefreaks.sharedappsample.features.explore_shared.repo_list
+
 import android.os.Bundle
 import androidx.navigation.NavType
 import androidx.navigation.navArgument

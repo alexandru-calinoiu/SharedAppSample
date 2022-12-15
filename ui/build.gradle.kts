@@ -6,4 +6,6 @@ plugins {
 
 android {
     addProductFlavours(this)
+
+    namespace = "com.agilefreaks.sharedappsample.ui"
 }

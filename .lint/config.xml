@@ -6,13 +6,7 @@
     <issue id="UnknownNullness" severity="ignore" />
     <issue id="WrongConstant" severity="ignore" />
     <issue id="NewApi" severity="ignore" />
-    <!-- Remove this when replace with final image -->
-    <issue id="IconLocation" severity="ignore" />
-    <issue id="InvalidPackage" severity="ignore">
-        <ignore path="**/**.jar" />
+    <issue id="InvalidPackage">
+        <ignore regexp="kotlinx.coroutines.debug.AgentPremain"/>
     </issue>
-    <issue id="VectorPath" severity="ignore" />
-    <!-- Remove this if we can find another method to get text from editexts -->
-    <issue id="DuplicateIncludedIds" severity="ignore" />
-    <issue id="SyntheticAccessor" severity="ignore" />
 </lint>

@@ -18,3 +18,7 @@ kotlin {
         val androidMain by getting
     }
 }
+
+android {
+    namespace = "com.agilefreaks.sharedappsample.features.profile_shared"
+}
