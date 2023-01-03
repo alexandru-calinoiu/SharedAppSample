@@ -21,7 +21,7 @@ class ViewModel(
         )
 
     override fun handleEvents(event: Contract.Event) {
-        TODO()
+        // no events to handle
     }
 
     private fun fetchRepoDetails() {

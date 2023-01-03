@@ -24,14 +24,16 @@ import kotlinx.coroutines.flow.emptyFlow
 @Composable
 fun Screen(
     state: Contract.State,
-    effects: Flow<Contract.Effect>,
-    onSendEvent: (Contract.Event) -> Unit
+    effects: Flow<Contract.Effect>
 ) {
     HandleEffects(effects) { }
 
     Box {
-        if (state.isLoading) Loading(Modifier.fillMaxSize())
-        else RepoDetailScreen(state.details)
+        if (state.isLoading) {
+            Loading(Modifier.fillMaxSize())
+        } else {
+            RepoDetailScreen(state.details)
+        }
     }
 }
 
@@ -107,9 +109,9 @@ private fun Loading(modifier: Modifier = Modifier) {
 
 @Composable
 @Preview
-fun previewOpen() {
+fun PreviewOpen() {
     Screen(
         state = Contract.State(isLoading = true, details = emptyRepoDetails()),
-        emptyFlow(),
-        onSendEvent = {})
+        emptyFlow()
+    )
 }

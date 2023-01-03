@@ -21,12 +21,12 @@ import androidx.paging.compose.items
 import com.agilefreaks.sharedappsample.features.explore.R
 import com.agilefreaks.sharedappsample.features.explore_shared.repo_list.Contract
 import com.agilefreaks.sharedappsample.features.explore_shared.repo_list.Repo
+import com.agilefreaks.sharedappsample.features.explore_shared.repo_list.State
 import com.agilefreaks.sharedappsample.ui.HandleEffects
 import com.agilefreaks.sharedappsample.ui.PagingView
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.emptyFlow
 import kotlinx.coroutines.flow.flowOf
-import com.agilefreaks.sharedappsample.features.explore_shared.repo_list.State
 
 @Composable
 fun Screen(
@@ -40,7 +40,8 @@ fun Screen(
 
     HandleEffects(effects) {
         when (it) {
-            is Contract.Effect.Navigation.ToDetails -> onNavigate(Contract.Effect.Navigation.ToDetails(it.repoOwner, it.repoName))
+            is Contract.Effect.Navigation.ToDetails ->
+                onNavigate(Contract.Effect.Navigation.ToDetails(it.repoOwner, it.repoName))
         }
     }
 
@@ -52,7 +53,16 @@ fun Screen(
             contentPadding = PaddingValues(space16dp)
         ) {
             items(list) {
-                it?.let { RepoItem(it) { onSendEvent(Contract.Event.SelectRepo(it.owner, it.name)) } }
+                it?.let {
+                    RepoItem(it) {
+                        onSendEvent(
+                            Contract.Event.SelectRepo(
+                                it.owner,
+                                it.name
+                            )
+                        )
+                    }
+                }
             }
         }
     }

@@ -1,11 +1,13 @@
 import extensions.addProductFlavours
 
 plugins {
-    id("commons.android-library")
+    plugin(BuildPlugins.androidLibrary)
 }
 
 android {
     addProductFlavours(this)
+
+    namespace = "com.agilefreaks.sharedappsample.features.explore"
 }
 
 dependencies {

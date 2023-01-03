@@ -1,8 +1,8 @@
 import dependencies.Dependencies
 
 plugins {
-    id("commons.shared-library")
-    id("com.apollographql.apollo3").version(dependencies.Dependencies.Apollo.VERSION)
+    plugin(BuildPlugins.sharedLibrary)
+    plugin(BuildPlugins.apollo)
 }
 
 kotlin {
@@ -35,8 +35,14 @@ kotlin {
     }
 }
 
+android {
+    namespace = "com.agilefreaks.sharedappsample"
+}
+
 apollo {
-    packageName.set("com.agilefreaks.sharedappsample.dtos")
-    generateApolloMetadata.set(true)
-    mapScalar("DateTime", "kotlinx.datetime.Instant", "com.apollographql.apollo3.adapter.KotlinxInstantAdapter")
+    service("github") {
+        packageName.set("com.agilefreaks.sharedappsample.dtos")
+        generateApolloMetadata.set(true)
+        mapScalar("DateTime", "kotlinx.datetime.Instant", "com.apollographql.apollo3.adapter.KotlinxInstantAdapter")
+    }
 }

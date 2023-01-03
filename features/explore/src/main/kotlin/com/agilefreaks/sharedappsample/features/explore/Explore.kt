@@ -10,11 +10,11 @@ import com.agilefreaks.sharedappsample.features.explore.repo_details.repoDetails
 import com.agilefreaks.sharedappsample.features.explore.repo_list.repoListModule
 import com.agilefreaks.sharedappsample.features.explore_shared.ExploreDestinations
 import com.agilefreaks.sharedappsample.features.explore_shared.modules
-import navArgs
+import com.agilefreaks.sharedappsample.features.explore_shared.repo_list.navArgs
+import com.agilefreaks.sharedappsample.features.explore_shared.repo_list.parseDetailsArgs
 import org.koin.androidx.compose.getViewModel
 import org.koin.core.module.Module
 import org.koin.core.parameter.parametersOf
-import parseDetailsArgs
 import com.agilefreaks.sharedappsample.features.explore.repo_details.Screen as RepoDetailsScreen
 import com.agilefreaks.sharedappsample.features.explore.repo_details.ViewModel as RepoDetailsViewModel
 import com.agilefreaks.sharedappsample.features.explore.repo_list.Screen as RepoListScreen
@@ -50,7 +50,7 @@ fun NavGraphBuilder.explore(navHostController: NavHostController) {
             RepoDetailsScreen(
                 state = detailsViewModel.viewState.collectAsState().value,
                 effects = detailsViewModel.effect
-            ) { event -> detailsViewModel.setEvent(event) }
+            )
         }
     }
 }

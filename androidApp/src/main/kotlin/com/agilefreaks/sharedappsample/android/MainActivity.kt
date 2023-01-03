@@ -24,8 +24,10 @@ class MainActivity : ComponentActivity() {
             SampleAppTheme {
                 Scaffold(
                     topBar = {
-                        TopAppBar(title = { Text("Title") },
-                        backgroundColor = MaterialTheme.colors.primary)
+                        TopAppBar(
+                            title = { Text("Title") },
+                            backgroundColor = MaterialTheme.colors.primary
+                        )
                     }
                 ) { innerPadding ->
                     NavHost(

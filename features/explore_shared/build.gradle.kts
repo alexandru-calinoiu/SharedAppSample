@@ -1,8 +1,8 @@
 import dependencies.Dependencies
 
 plugins {
-    id("commons.shared-library")
-    id("com.apollographql.apollo3").version(dependencies.Dependencies.Apollo.VERSION)
+    plugin(BuildPlugins.sharedLibrary)
+    plugin(BuildPlugins.apollo)
 }
 
 dependencies {
@@ -38,6 +38,12 @@ kotlin {
     }
 }
 
+android {
+    namespace = "com.agilefreaks.sharedappsample.features.explore_shared"
+}
+
 apollo {
-    packageName.set("com.agilefreaks.sharedappsample.features.explore.dtos")
+    service("github") {
+        packageName.set("com.agilefreaks.sharedappsample.features.explore.dtos")
+    }
 }

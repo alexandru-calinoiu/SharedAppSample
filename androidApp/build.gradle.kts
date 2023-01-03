@@ -4,12 +4,14 @@ import dependencies.TestAndroidDependencies
 import extensions.addProductFlavours
 
 plugins {
-    id("com.android.application")
-    kotlin("android")
+    plugin(BuildPlugins.androidApplication)
+    plugin(BuildPlugins.kotlinAndroid)
+    plugin(BuildPlugins.kotlinKapt)
 }
 
 android {
     compileSdk = BuildAndroidConfig.COMPILE_SDK_VERSION
+    namespace = "com.agilefreaks.sharedappsample.android"
 
     defaultConfig {
         applicationId = BuildAndroidConfig.APPLICATION_ID
@@ -78,7 +80,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = Dependencies.AndroidX.Compose.VERSION
+        kotlinCompilerExtensionVersion  = Dependencies.AndroidX.Compose.VERSION
     }
 }
 

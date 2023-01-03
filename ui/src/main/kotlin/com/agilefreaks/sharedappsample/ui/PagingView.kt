@@ -26,7 +26,7 @@ fun <T : Any> PagingView(
             list.apply {
                 when {
                     loadState.append is LoadState.Loading -> item { ListLoadingView() }
-                    loadState.append is LoadState.Error && loadState.append !is LoadState.Loading -> {
+                    loadState.append is LoadState.Error -> {
                         item { ListErrorView() }
                     }
                 }
