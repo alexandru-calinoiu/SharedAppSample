@@ -109,7 +109,7 @@ private fun Loading(modifier: Modifier = Modifier) {
 
 @Composable
 @Preview
-fun PreviewOpen () {
+fun PreviewOpen() {
     Screen(
         state = Contract.State(isLoading = true, details = emptyRepoDetails()),
         emptyFlow()

@@ -42,10 +42,10 @@ object Dependencies {
         object Compose {
             const val VERSION = "1.3.2"
 
-            const val UI = "androidx.compose.ui:ui:1.3.1"
+            const val UI = "androidx.compose.ui:ui:1.3.2"
 
             // Tooling support (Previews, etc.)
-            const val UI_TOOLING = "androidx.compose.ui:ui-tooling:1.3.1"
+            const val UI_TOOLING = "androidx.compose.ui:ui-tooling:1.3.2"
 
             // Foundation (Border, Background, Box, Image, Scroll, shapes, animations, etc.)
             const val FOUNDATION = "androidx.compose.foundation:foundation:1.3.1"
@@ -78,17 +78,17 @@ object Dependencies {
     }
 
     object Apollo {
-        const val VERSION = "3.7.2"
+        const val VERSION = "3.7.3"
 
         const val RUNTIME = "com.apollographql.apollo3:apollo-runtime:$VERSION"
         const val ADAPTERS = "com.apollographql.apollo3:apollo-adapters:$VERSION"
     }
 
     object Koin {
-        const val VERSION = "3.2.2"
+        const val VERSION = "3.3.2"
 
         const val CORE = "io.insert-koin:koin-core:$VERSION"
         const val ANDROID = "io.insert-koin:koin-android:$VERSION"
-        const val COMPOSE = "io.insert-koin:koin-androidx-compose:$VERSION"
+        const val COMPOSE = "io.insert-koin:koin-androidx-compose:3.4.1"
     }
 }
